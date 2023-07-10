@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#488aff</color>
+    <color name="tintchange">#000000</color>
+    <color name="colorPrimaryDark">#488aff</color>
+    <color name="colorAccent">#488aff</color>
+    <color name="transparant">#0000ffff</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#a9a6a6</color>
+    <color name="Colorlight">#f0b5ffff</color>
+    <color name="ReportColor">#488aff</color>
+    <color name="radio_button_selected_color">#ff33b5e5</color>
+    <color name="radio_button_unselected_color">#e0e0e0</color>
+    <color name="colred">#ff0000</color>
+    <color name="header">#488aff</color>
+    <color name="headerText">#ffffff</color>
+    <color name="BlackText">#000000</color>
+    <color name="RedText">#ff0011</color>
+    <color name="GreenText">#4caf50</color>
+    <color name="transparent">#00488AFF</color>
+    <color name="headersection">#34bbd6</color>
+    <color name="recievedColor">#c534b0d6</color>
+    <color name="withintimelimit">#488aff</color>
+    <color name="exceededlimit">#ff0000</color>
+    <color name="lightcard">#e2f2fa</color>
+
+
+</resources>

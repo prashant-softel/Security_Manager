@@ -1,0 +1,2099 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".visitor_unit">
+
+    <LinearLayout
+        android:id="@+id/Layout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <ScrollView
+            android:id="@+id/parenatsection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="20dp">
+
+                <!--<View
+                android:id="@+id/dividerLine"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/wingLayout"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="?android:attr/listDivider" />-->
+
+                <LinearLayout
+                    android:id="@+id/DOCUPLOAD"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/DocumentDetails"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:gravity="center"
+                        android:textColor="@color/ReportColor"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:id="@+id/imageviewdocL"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:paddingTop="5dp">
+
+                        <ImageView
+                            android:id="@+id/ImageDoc"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:foregroundGravity="center" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:id="@+id/UpDocImageLayout"
+                            android:layout_width="120dp"
+                            android:layout_height="30dp"
+                            android:layout_below="@+id/imageviewdocL"
+
+                            android:background="@drawable/rounded_corner"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/imageView4"
+                                android:layout_width="20dp"
+                                android:layout_height="27dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_weight="1"
+                                android:background="@color/colorPrimary"
+                                android:paddingLeft="5dp"
+                                app:srcCompat="@mipmap/ic_camera" />
+
+                            <TextView
+                                android:id="@+id/textView3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginRight="5dp"
+                                android:paddingTop="5dp"
+                                android:radius="5dp"
+                                android:text="@string/select_image"
+                                android:textColor="@color/headerText"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_below="@+id/imageviewdocL"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="5dp"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/btndocUpload"
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:background="@color/header"
+                                android:text="@string/upload"
+                                android:textColor="@color/white"
+                                android:visibility="gone" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/MainLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/DOCUPLOAD"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:id="@+id/wingLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/headerText"
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:id="@+id/textView25"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:text="@string/wing"
+                            android:textColor="@color/BlackText"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <Spinner
+                            android:id="@+id/wingSpinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            style="@style/Widget.AppCompat.DropDownItem.Spinner"/>
+                            </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/unitLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/wingLayout"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/headerText"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView26"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:text="@string/owner_name"
+                            android:textColor="@color/BlackText"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <Spinner
+                            android:id="@+id/unitSpinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/Lsendforapproval"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/unitLayout"
+                        android:gravity="right"
+                        android:orientation="horizontal">
+
+
+                        <android.support.v7.widget.CardView
+                            android:id="@+id/txtsendforapproval"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:background="@color/header"
+                            segmentedgroup:cardBackgroundColor="@color/header"
+                            segmentedgroup:cardCornerRadius="10dp">
+
+                            <TextView
+                                android:id="@+id/txtsendforproposal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:text="@string/send_for_approval"
+                                android:textColor="@color/white" />
+                        </android.support.v7.widget.CardView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ContactLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/Lsendforapproval"
+                        android:clickable="true"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+
+                        <ImageView
+                            android:id="@+id/phoneIcon"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@android:drawable/stat_sys_phone_call_forward" />
+
+                        <TextView
+                            android:id="@+id/contactNo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="2"
+                            android:text="" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ContactLayout"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:id="@+id/real"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:minHeight="80dp"
+                            android:visibility="gone">
+
+                            <info.hoang8f.android.segmented.SegmentedGroup
+                                android:id="@+id/segmented"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:baselineAligned="false"
+
+                                android:orientation="horizontal"
+                                segmentedgroup:sc_border_width="1dp"
+                                segmentedgroup:sc_checked_text_color="#7C4DFF"
+                                segmentedgroup:sc_corner_radius="10dp"
+                                segmentedgroup:sc_tint_color="@color/ReportColor"
+                                segmentedgroup:sc_unchecked_tint_color="#ff0000">
+
+                                <RadioButton
+                                    android:id="@+id/segButtonA1"
+                                    style="@style/RadioButton"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:onClick="ApprovedVisitor"
+                                    android:text="@string/approved"
+                                    android:textColor="@color/ic_launcher_background" />
+
+                                <RadioButton
+                                    android:id="@+id/segButtonA2"
+                                    style="@style/RadioButton"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:onClick="WitoutAppVisitor"
+                                    android:text="@string/without_approval"
+                                    android:textColor="@color/ic_launcher_background"
+                                    android:textSize="12sp" />
+
+                                <RadioButton
+                                    android:id="@+id/segButtonA3"
+                                    style="@style/RadioButton"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:onClick="DeniedVisitor"
+                                    android:text="@string/denied"
+                                    android:textColor="@color/ic_launcher_background" />
+                            </info.hoang8f.android.segmented.SegmentedGroup>
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/approvemsg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="@string/approved_with_message"
+                            android:textColor="@color/BlackText"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/msg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:textColor="@color/BlackText"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <!---      Second Column       -->
+                <LinearLayout
+                    android:id="@+id/MainLayout1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/MainLayout"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+
+                    <View
+                        android:id="@+id/dividerLine"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_below="@+id/MainLayout1"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="?android:attr/listDivider" />
+
+                    <LinearLayout
+                        android:id="@+id/wingLayout1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/dividerLine"
+                        android:background="@color/headerText"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView27"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:text="@string/wing"
+                            android:textColor="@color/BlackText"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <Spinner
+                            android:id="@+id/wingSpinner1"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/unitLayout1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/wingLayout1"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/headerText"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView28"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:text="@string/owner_name"
+                            android:textColor="@color/BlackText"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <Spinner
+                            android:id="@+id/unitSpinner1"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/Lsendforapproval1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/unitLayout1"
+                        android:gravity="right"
+                        android:orientation="horizontal">
+
+
+                        <android.support.v7.widget.CardView
+                            android:id="@+id/txtsendforapproval1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:background="@color/header"
+                            segmentedgroup:cardBackgroundColor="@color/header"
+                            segmentedgroup:cardCornerRadius="10dp">
+
+                            <TextView
+                                android:id="@+id/txtsendforproposal1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:text="@string/send_for_approval"
+                                android:textColor="@color/white" />
+                        </android.support.v7.widget.CardView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ContactLayout1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/Lsendforapproval1"
+                        android:clickable="true"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:id="@+id/phoneIcon1"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@android:drawable/stat_sys_phone_call_forward" />
+
+                        <TextView
+                            android:id="@+id/contactNo1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="2"
+                            android:text="" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ContactLayout1"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:id="@+id/real1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:minHeight="80dp"
+                            android:visibility="gone">
+
+                            <info.hoang8f.android.segmented.SegmentedGroup
+                                android:id="@+id/segmented1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:orientation="horizontal"
+
+                                segmentedgroup:sc_border_width="1dp"
+                                segmentedgroup:sc_checked_text_color="#7C4DFF"
+                                segmentedgroup:sc_corner_radius="10dp"
+                                segmentedgroup:sc_tint_color="@color/ReportColor"
+                                segmentedgroup:sc_unchecked_tint_color="#ff0000">
+
+                                <RadioButton
+                                    android:id="@+id/segButtonB1"
+                                    style="@style/RadioButton"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:onClick="ApprovedVisitor1"
+                                    android:text="@string/approved"
+                                    android:textColor="@color/ic_launcher_background" />
+
+                                <RadioButton
+                                    android:id="@+id/segButtonB2"
+                                    style="@style/RadioButton"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:onClick="WitoutAppVisitor1"
+                                    android:text="@string/without_approval"
+                                    android:textColor="@color/ic_launcher_background"
+                                    android:textSize="12sp" />
+
+                                <RadioButton
+                                    android:id="@+id/segButtonB3"
+                                    style="@style/RadioButton"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:onClick="DeniedVisitor1"
+                                    android:text="@string/denied"
+                                    android:textColor="@color/ic_launcher_background" />
+                            </info.hoang8f.android.segmented.SegmentedGroup>
+
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/approvemsg1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Approved With Message : "
+                            android:textColor="@color/BlackText"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/msg1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:textColor="@color/BlackText"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <!---      Third Column       -->
+                <LinearLayout
+                    android:id="@+id/MainLayout2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/MainLayout1"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+
+                    <View
+                        android:id="@+id/dividerLine1"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_below="@+id/MainLayout2"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="?android:attr/listDivider" />
+
+                    <LinearLayout
+                        android:id="@+id/wingLayout2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/dividerLine1"
+                        android:background="@color/headerText"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView29"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:text="@string/wing"
+                            android:textColor="@color/BlackText"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <Spinner
+                            android:id="@+id/wingSpinner2"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/unitLayout2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/wingLayout2"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/headerText"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView30"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:text="@string/owner_name"
+                            android:textColor="@color/BlackText"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <Spinner
+                            android:id="@+id/unitSpinner2"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/Lsendforapproval2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/unitLayout2"
+                        android:gravity="right"
+                        android:orientation="horizontal">
+
+
+                        <android.support.v7.widget.CardView
+                            android:id="@+id/txtsendforapproval2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:background="@color/header"
+                            segmentedgroup:cardBackgroundColor="@color/header"
+                            segmentedgroup:cardCornerRadius="10dp">
+
+                            <TextView
+                                android:id="@+id/txtsendforproposal2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:text="@string/send_for_approval"
+                                android:textColor="@color/white" />
+                        </android.support.v7.widget.CardView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ContactLayout2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/Lsendforapproval2"
+                        android:clickable="true"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:id="@+id/phoneIcon2"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@android:drawable/stat_sys_phone_call_forward" />
+
+                        <TextView
+                            android:id="@+id/contactNo2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="2"
+                            android:text="" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ContactLayout2"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:id="@+id/real2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:minHeight="80dp"
+                            android:visibility="gone">
+
+                            <info.hoang8f.android.segmented.SegmentedGroup
+                                android:id="@+id/segmented2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:orientation="horizontal"
+
+                                segmentedgroup:sc_border_width="1dp"
+                                segmentedgroup:sc_checked_text_color="#7C4DFF"
+                                segmentedgroup:sc_corner_radius="10dp"
+                                segmentedgroup:sc_tint_color="@color/ReportColor"
+                                segmentedgroup:sc_unchecked_tint_color="#ff0000">
+
+                                <RadioButton
+                                    android:id="@+id/segButtonC1"
+                                    style="@style/RadioButton"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:onClick="ApprovedVisitor2"
+                                    android:text="@string/approved"
+                                    android:textColor="@color/ic_launcher_background" />
+
+                                <RadioButton
+                                    android:id="@+id/segButtonC2"
+                                    style="@style/RadioButton"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:onClick="WitoutAppVisitor2"
+                                    android:text="@string/without_approval"
+                                    android:textColor="@color/ic_launcher_background"
+                                    android:textSize="12sp" />
+
+                                <RadioButton
+                                    android:id="@+id/segButtonC3"
+                                    style="@style/RadioButton"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:onClick="DeniedVisitor2"
+                                    android:text="@string/denied"
+                                    android:textColor="@color/ic_launcher_background" />
+                            </info.hoang8f.android.segmented.SegmentedGroup>
+
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/approvemsg2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Approved With Message : "
+                            android:textColor="@color/BlackText"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/msg2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:textColor="@color/BlackText"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!---      Fourth Column       -->
+                <LinearLayout
+                    android:id="@+id/MainLayout3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/MainLayout2"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+
+                    <View
+                        android:id="@+id/dividerLine2"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_below="@+id/MainLayout3"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="?android:attr/listDivider" />
+
+                    <LinearLayout
+                        android:id="@+id/wingLayout3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/dividerLine2"
+                        android:background="@color/headerText"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView31"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:text="@string/wing"
+                            android:textColor="@color/BlackText"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <Spinner
+                            android:id="@+id/wingSpinner3"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/unitLayout3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/wingLayout3"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/headerText"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView32"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:text="@string/owner_name"
+                            android:textColor="@color/BlackText"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <Spinner
+                            android:id="@+id/unitSpinner3"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/Lsendforapproval3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/unitLayout2"
+                        android:gravity="right"
+                        android:orientation="horizontal">
+
+
+                        <android.support.v7.widget.CardView
+                            android:id="@+id/txtsendforapproval3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:background="@color/header"
+                            segmentedgroup:cardBackgroundColor="@color/header"
+                            segmentedgroup:cardCornerRadius="10dp">
+
+                            <TextView
+                                android:id="@+id/txtsendforproposal3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:text="@string/send_for_approval"
+                                android:textColor="@color/white" />
+                        </android.support.v7.widget.CardView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ContactLayout3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/Lsendforapproval3"
+                        android:clickable="true"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:id="@+id/phoneIcon3"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@android:drawable/stat_sys_phone_call_forward" />
+
+                        <TextView
+                            android:id="@+id/contactNo3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="2"
+                            android:text="" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ContactLayout3"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:id="@+id/real3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:minHeight="80dp"
+                            android:visibility="gone">
+
+                            <info.hoang8f.android.segmented.SegmentedGroup
+                                android:id="@+id/segmented3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:orientation="horizontal"
+
+                                segmentedgroup:sc_border_width="1dp"
+                                segmentedgroup:sc_checked_text_color="#7C4DFF"
+                                segmentedgroup:sc_corner_radius="10dp"
+                                segmentedgroup:sc_tint_color="@color/ReportColor"
+                                segmentedgroup:sc_unchecked_tint_color="#ff0000">
+
+                                <RadioButton
+                                    android:id="@+id/segButtonD1"
+                                    style="@style/RadioButton"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:onClick="ApprovedVisitor3"
+                                    android:text="@string/approved"
+                                    android:textColor="@color/ic_launcher_background" />
+
+                                <RadioButton
+                                    android:id="@+id/segButtonD2"
+                                    style="@style/RadioButton"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:onClick="WitoutAppVisitor3"
+                                    android:text="@string/without_approval"
+                                    android:textColor="@color/ic_launcher_background"
+                                    android:textSize="12sp" />
+
+                                <RadioButton
+                                    android:id="@+id/segButtonD3"
+                                    style="@style/RadioButton"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:onClick="DeniedVisitor3"
+                                    android:text="@string/denied"
+                                    android:textColor="@color/ic_launcher_background" />
+                            </info.hoang8f.android.segmented.SegmentedGroup>
+
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/approvemsg3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Approved With Message : "
+                            android:textColor="@color/BlackText"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/msg3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:textColor="@color/BlackText"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/addmore"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/MainLayout3"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/addUnit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:gravity="right"
+                        android:text="@string/add_more"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/deletemore"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/addmore"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/DeleteUnit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:gravity="right"
+                        android:text="@string/remove_unit"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/submitL"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/deletemore"
+                    android:layout_marginBottom="100dp"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/submit"
+                        android:layout_width="150dp"
+                        android:layout_height="35dp"
+                        android:background="@color/ReportColor"
+                        android:text="@string/submit"
+                        android:textColor="@color/ic_launcher_background" />
+
+
+                    <!--<Button
+                    android:id="@+id/cancle"
+                    android:layout_width="150dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="5dp"
+                    android:background="@color/ReportColor"
+                    android:text="Cancle"
+                    android:textColor="@color/ic_launcher_background" />-->
+                </LinearLayout>
+
+            </RelativeLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/Layout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Layout1"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ScrollView
+            android:id="@+id/parenatsection1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="15dp">
+
+                <LinearLayout
+                    android:id="@+id/DOCUPLOAD1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/DocumentDetails1"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:gravity="center"
+                        android:textColor="@color/ReportColor"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:id="@+id/imageviewdocL1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:paddingTop="5dp">
+
+                        <ImageView
+                            android:id="@+id/ImageDoc1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:foregroundGravity="center" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:id="@+id/UpDocImageLayout1"
+                            android:layout_width="120dp"
+                            android:layout_height="30dp"
+                            android:layout_below="@+id/imageviewdocL1"
+                            android:background="@drawable/rounded_corner"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/imageView41"
+                                android:layout_width="20dp"
+                                android:layout_height="27dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_weight="1"
+                                android:background="@color/colorPrimary"
+                                android:paddingLeft="5dp"
+                                app:srcCompat="@mipmap/ic_camera" />
+
+                            <TextView
+                                android:id="@+id/textView35"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginRight="5dp"
+                                android:paddingTop="5dp"
+                                android:radius="5dp"
+                                android:text="@string/select_image"
+                                android:textColor="@color/headerText"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_below="@+id/imageviewdocL1"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="5dp"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/btndocUpload1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:background="@color/header"
+                                android:text="@string/upload"
+                                android:textColor="@color/white"
+                                android:visibility="gone" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/MainLayoutw"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/DOCUPLOAD1"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <LinearLayout
+                        android:id="@+id/wingLayoutw"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/headerText"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView25w"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:text="@string/wing"
+                            android:textColor="@color/BlackText"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:id="@+id/wing_button0"
+                            android:visibility="visible">
+
+                        </LinearLayout>
+
+                        <Spinner
+                            android:id="@+id/wingSpinnerw"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="10dp"
+                            android:visibility="gone"
+                            android:layout_marginRight="10dp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/unitLayoutw"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/wingLayoutw"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@color/headerText"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView26w"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:text="@string/select_flat"
+                            android:textColor="@color/BlackText"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:id="@+id/unit_button0"
+                            android:orientation="vertical"
+                            android:background="@drawable/rectangle"
+                            android:visibility="visible">
+                            <android.support.v4.widget.NestedScrollView
+                                android:layout_width="match_parent"
+                                android:id="@+id/scrollunit0"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_horizontal"
+                                android:scrollbars="vertical"
+                                android:visibility="visible">
+                                <GridLayout
+                                    android:id="@+id/grid0"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:rowOrderPreserved="true"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_gravity="center_horizontal"
+                                    android:alignmentMode="alignBounds">
+                                </GridLayout>
+                            </android.support.v4.widget.NestedScrollView>
+
+
+                        </LinearLayout>
+
+                        <Spinner
+                            android:id="@+id/unitSpinnerw"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:visibility="gone"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/unittext0"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:paddingHorizontal="5dp"/>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/ContactLayoutw"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/unitLayoutw"
+                        android:clickable="true"
+                        android:orientation="horizontal"
+                        android:visibility="visible">
+
+
+                        <ImageView
+                            android:id="@+id/phoneIconw"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@android:drawable/stat_sys_phone_call_forward" />
+
+                        <TextView
+                            android:id="@+id/contactNow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="2"
+                            android:text="" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ContactLayoutw"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:id="@+id/realw"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:minHeight="80dp"
+                            android:visibility="visible">
+
+                            <info.hoang8f.android.segmented.SegmentedGroup
+                                android:id="@+id/segmentedw"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:baselineAligned="false"
+
+                                android:orientation="horizontal"
+                                segmentedgroup:sc_border_width="1dp"
+                                segmentedgroup:sc_checked_text_color="#7C4DFF"
+                                segmentedgroup:sc_corner_radius="10dp"
+                                segmentedgroup:sc_tint_color="@color/ReportColor"
+                                segmentedgroup:sc_unchecked_tint_color="#ff0000">
+
+                                <RadioButton
+                                    android:id="@+id/segButtonA1w"
+                                    style="@style/RadioButton"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:onClick="ApprovedVisitor"
+                                    android:text="@string/approved"
+                                    android:textColor="@color/ic_launcher_background" />
+
+                                <RadioButton
+                                    android:id="@+id/segButtonA2w"
+                                    style="@style/RadioButton"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:onClick="WitoutAppVisitor"
+                                    android:text="@string/without_approval"
+                                    android:textColor="@color/ic_launcher_background"
+                                    android:textSize="12sp" />
+
+                                <RadioButton
+                                    android:id="@+id/segButtonA3w"
+                                    style="@style/RadioButton"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:onClick="DeniedVisitor"
+                                    android:text="@string/denied"
+                                    android:textColor="@color/ic_launcher_background" />
+                            </info.hoang8f.android.segmented.SegmentedGroup>
+                        </RelativeLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/MainLayoutw1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/MainLayoutw"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+
+                    <View
+                        android:id="@+id/dividerLinew"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_below="@+id/MainLayoutw1"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="?android:attr/listDivider" />
+
+                    <LinearLayout
+                        android:id="@+id/wingLayoutw1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/dividerLinew"
+                        android:background="@color/headerText"
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:id="@+id/textView27w"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:text="@string/wing"
+                            android:textColor="@color/BlackText"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:id="@+id/wing_button"
+                            android:visibility="visible">
+
+                        </LinearLayout>
+
+                        <Spinner
+                            android:id="@+id/wingSpinnerw1"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:visibility="gone"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/unitLayoutw1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/wingLayoutw1"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@color/headerText"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView28w"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:text="@string/select_flat"
+                            android:textColor="@color/BlackText"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:id="@+id/unit_button"
+                            android:orientation="vertical"
+                            android:background="@drawable/rectangle"
+                            android:visibility="visible">
+                            <android.support.v4.widget.NestedScrollView
+                                android:layout_width="match_parent"
+                                android:id="@+id/scrollunit"
+                                android:layout_height="match_parent"
+                                android:scrollbars="vertical"
+                                android:visibility="visible">
+                                <GridLayout
+                                    android:id="@+id/grid"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_gravity="center_horizontal"
+                                    android:alignmentMode="alignBounds"
+                                    >
+                                </GridLayout>
+
+                            </android.support.v4.widget.NestedScrollView>
+
+
+                        </LinearLayout>
+
+                        <Spinner
+                            android:id="@+id/unitSpinnerw1"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="10dp"
+                            android:visibility="gone"
+                            android:layout_marginRight="10dp" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/unittext"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:paddingHorizontal="5dp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ContactLayoutw1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/unitLayoutw1"
+                        android:clickable="true"
+                        android:orientation="horizontal"
+                        android:visibility="visible">
+
+                        <ImageView
+                            android:id="@+id/phoneIconw1"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@android:drawable/stat_sys_phone_call_forward" />
+
+                        <TextView
+                            android:id="@+id/contactNow1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="2"
+                            android:text="" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ContactLayoutw1"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:id="@+id/real1w"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:minHeight="80dp"
+                            android:visibility="visible">
+
+                            <info.hoang8f.android.segmented.SegmentedGroup
+                                android:id="@+id/segmentedw1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:orientation="horizontal"
+
+                                segmentedgroup:sc_border_width="1dp"
+                                segmentedgroup:sc_checked_text_color="#7C4DFF"
+                                segmentedgroup:sc_corner_radius="10dp"
+                                segmentedgroup:sc_tint_color="@color/ReportColor"
+                                segmentedgroup:sc_unchecked_tint_color="#ff0000">
+
+                                <RadioButton
+                                    android:id="@+id/segButtonB1w"
+                                    style="@style/RadioButton"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:onClick="ApprovedVisitor1"
+                                    android:text="@string/approved"
+                                    android:textColor="@color/ic_launcher_background" />
+
+                                <RadioButton
+                                    android:id="@+id/segButtonB2w"
+                                    style="@style/RadioButton"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:onClick="WitoutAppVisitor1"
+                                    android:text="@string/without_approval"
+                                    android:textColor="@color/ic_launcher_background"
+                                    android:textSize="12sp" />
+
+                                <RadioButton
+                                    android:id="@+id/segButtonB3w"
+                                    style="@style/RadioButton"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:onClick="DeniedVisitor1"
+                                    android:text="@string/denied"
+                                    android:textColor="@color/ic_launcher_background" />
+                            </info.hoang8f.android.segmented.SegmentedGroup>
+                        </RelativeLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <!---      Third Column       -->
+                <LinearLayout
+                    android:id="@+id/MainLayoutw2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/MainLayoutw1"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+
+                    <View
+                        android:id="@+id/dividerLinew1"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_below="@+id/MainLayoutw2"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="?android:attr/listDivider" />
+
+                    <LinearLayout
+                        android:id="@+id/wingLayoutw2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/dividerLine1"
+                        android:background="@color/headerText"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView29w"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:text="@string/wing"
+                            android:textColor="@color/BlackText"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:id="@+id/wing_button2"
+                            android:visibility="visible">
+
+                        </LinearLayout>
+
+                        <Spinner
+                            android:id="@+id/wingSpinnerw2"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:visibility="gone"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/unitLayoutw2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/wingLayoutw2"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@color/headerText"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView30w"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:text="@string/select_flat"
+                            android:textColor="@color/BlackText"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/unit_button2"
+                            android:orientation="vertical"
+                            android:background="@drawable/rectangle"
+                            android:visibility="visible">
+                            <android.support.v4.widget.NestedScrollView
+                                android:layout_width="match_parent"
+                                android:id="@+id/scrollunit2"
+                                android:layout_height="200dp"
+                                android:scrollbars="vertical"
+                                android:visibility="visible">
+                                <GridLayout
+                                    android:id="@+id/grid2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_gravity="center_horizontal"
+                                    android:alignmentMode="alignBounds">
+
+                                </GridLayout>
+                            </android.support.v4.widget.NestedScrollView>
+
+
+                        </LinearLayout>
+
+                        <Spinner
+                            android:id="@+id/unitSpinnerw2"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:visibility="gone"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/unittext2"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:paddingHorizontal="5dp"/>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/ContactLayoutw2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/unitLayoutw2"
+                        android:clickable="true"
+                        android:orientation="horizontal"
+                        android:visibility="visible">
+
+                        <ImageView
+                            android:id="@+id/phoneIconw2"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@android:drawable/stat_sys_phone_call_forward" />
+
+                        <TextView
+                            android:id="@+id/contactNow2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="2"
+                            android:text="" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ContactLayoutw2"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:id="@+id/realw2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:minHeight="80dp"
+                            android:visibility="visible">
+
+                            <info.hoang8f.android.segmented.SegmentedGroup
+                                android:id="@+id/segmentedw2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:orientation="horizontal"
+
+                                segmentedgroup:sc_border_width="1dp"
+                                segmentedgroup:sc_checked_text_color="#7C4DFF"
+                                segmentedgroup:sc_corner_radius="10dp"
+                                segmentedgroup:sc_tint_color="@color/ReportColor"
+                                segmentedgroup:sc_unchecked_tint_color="#ff0000">
+
+                                <RadioButton
+                                    android:id="@+id/segButtonCw1"
+                                    style="@style/RadioButton"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:onClick="ApprovedVisitor2"
+                                    android:text="@string/approved"
+                                    android:textColor="@color/ic_launcher_background" />
+
+                                <RadioButton
+                                    android:id="@+id/segButtonCw2"
+                                    style="@style/RadioButton"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:onClick="WitoutAppVisitor2"
+                                    android:text="@string/without_approval"
+                                    android:textColor="@color/ic_launcher_background"
+                                    android:textSize="12sp" />
+
+                                <RadioButton
+                                    android:id="@+id/segButtonCw3"
+                                    style="@style/RadioButton"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:onClick="DeniedVisitor2"
+                                    android:text="@string/denied"
+                                    android:textColor="@color/ic_launcher_background" />
+                            </info.hoang8f.android.segmented.SegmentedGroup>
+                        </RelativeLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!---      Fourth Column       -->
+                <LinearLayout
+                    android:id="@+id/MainLayoutw3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/MainLayoutw2"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+
+                    <View
+                        android:id="@+id/dividerLinew2"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_below="@+id/MainLayoutw3"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="?android:attr/listDivider" />
+
+                    <LinearLayout
+                        android:id="@+id/wingLayoutw3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/dividerLinew2"
+                        android:background="@color/headerText"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView31w"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:text="@string/wing"
+                            android:textColor="@color/BlackText"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:id="@+id/wing_button3"
+                            android:visibility="visible">
+
+                        </LinearLayout>
+
+                        <Spinner
+                            android:id="@+id/wingSpinnerw3"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:visibility="gone"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/unitLayoutw3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/wingLayoutw3"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@color/headerText"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView32w"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:text="@string/select_flat"
+                            android:textColor="@color/BlackText"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/unit_button3"
+                            android:orientation="vertical"
+                            android:background="@drawable/rectangle"
+                            android:visibility="visible">
+                            <android.support.v4.widget.NestedScrollView
+                                android:layout_width="match_parent"
+                                android:id="@+id/scrollunit3"
+                                android:layout_height="200dp"
+                                android:scrollbars="vertical"
+                                android:visibility="visible">
+                                <GridLayout
+                                    android:id="@+id/grid3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_gravity="center_horizontal"
+                                    android:alignmentMode="alignBounds">
+
+                                </GridLayout>
+                            </android.support.v4.widget.NestedScrollView>
+
+
+                        </LinearLayout>
+
+                        <Spinner
+                            android:id="@+id/unitSpinnerw3"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:visibility="gone"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/unittext3"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:paddingHorizontal="5dp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ContactLayoutw3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/unitLayoutw3"
+                        android:clickable="true"
+                        android:orientation="horizontal"
+                        android:visibility="visible">
+
+                        <ImageView
+                            android:id="@+id/phoneIconw3"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@android:drawable/stat_sys_phone_call_forward" />
+
+                        <TextView
+                            android:id="@+id/contactNow3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="2"
+                            android:text="" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ContactLayoutw3"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:id="@+id/realw3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:minHeight="80dp"
+                            android:visibility="visible">
+
+                            <info.hoang8f.android.segmented.SegmentedGroup
+                                android:id="@+id/segmentedw3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:orientation="horizontal"
+
+                                segmentedgroup:sc_border_width="1dp"
+                                segmentedgroup:sc_checked_text_color="#7C4DFF"
+                                segmentedgroup:sc_corner_radius="10dp"
+                                segmentedgroup:sc_tint_color="@color/ReportColor"
+                                segmentedgroup:sc_unchecked_tint_color="#ff0000">
+
+                                <RadioButton
+                                    android:id="@+id/segButtonD1w"
+                                    style="@style/RadioButton"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:onClick="ApprovedVisitor3"
+                                    android:text="@string/approved"
+                                    android:textColor="@color/ic_launcher_background" />
+
+                                <RadioButton
+                                    android:id="@+id/segButtonD2w"
+                                    style="@style/RadioButton"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:onClick="WitoutAppVisitor3"
+                                    android:text="@string/without_approval"
+                                    android:textColor="@color/ic_launcher_background"
+                                    android:textSize="12sp" />
+
+                                <RadioButton
+                                    android:id="@+id/segButtonD3w"
+                                    style="@style/RadioButton"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:onClick="DeniedVisitor3"
+                                    android:text="@string/denied"
+                                    android:textColor="@color/ic_launcher_background" />
+                            </info.hoang8f.android.segmented.SegmentedGroup>
+
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/addmorew"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/MainLayoutw3"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/addUnitw"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:gravity="right"
+                        android:text="@string/add_more"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/deletemorew"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/addmorew"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/DeleteUnitw"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:gravity="right"
+                        android:text="@string/remove_unit"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/submitLw"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/deletemorew"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="100dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/submitw"
+                        android:layout_width="150dp"
+                        android:layout_height="35dp"
+                        android:background="@color/ReportColor"
+                        android:text="@string/submit"
+                        android:textColor="@color/ic_launcher_background" />
+                </LinearLayout>
+
+            </RelativeLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</RelativeLayout>

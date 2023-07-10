@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".staff_exit">
+
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/header"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="2dp"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="110dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp">
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="30dp"
+                        android:layout_height="40dp"
+                        android:foregroundGravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="15dp"
+                        android:src="@mipmap/staffpeople" />
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:paddingLeft="35dp"
+                        android:paddingTop="20dp"
+                        android:text="@string/total_staff"
+                        android:textColor="@color/header" />
+
+                    <TextView
+                        android:id="@+id/totalstaff"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingLeft="40dp"
+                        android:paddingTop="40dp"
+                        android:textColor="@color/tintchange"
+                        android:textSize="36sp" />
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="110dp"
+                    android:layout_height="100dp"
+                    android:layout_marginRight="2dp"
+                    android:paddingLeft="20dp">
+
+                    <ImageView
+                        android:id="@+id/in"
+                        android:layout_width="30dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="15dp"
+                        android:foregroundGravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="23dp"
+                        android:paddingBottom="2dp"
+                        android:src="@mipmap/staffin" />
+
+                    <TextView
+                        android:id="@+id/txtin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:paddingLeft="50dp"
+                        android:paddingTop="20dp"
+                        android:paddingRight="20dp"
+                        android:text="@string/in"
+                        android:textColor="@color/header" />
+
+                    <TextView
+                        android:id="@+id/totalin"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:paddingLeft="30dp"
+                        android:paddingTop="40dp"
+                        android:textColor="@color/tintchange"
+                        android:textSize="36sp" />
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp">
+
+                    <ImageView
+                        android:id="@+id/out"
+                        android:layout_width="30dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="15dp"
+                        android:foregroundGravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="23dp"
+                        android:paddingBottom="2dp"
+                        android:src="@mipmap/staffout" />
+
+                    <TextView
+                        android:id="@+id/txtout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:paddingLeft="50dp"
+                        android:paddingTop="20dp"
+                        android:paddingRight="10dp"
+                        android:text="@string/out"
+                        android:textColor="@color/header" />
+
+                    <TextView
+                        android:id="@+id/totalout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingLeft="30dp"
+                        android:paddingTop="40dp"
+                        android:textColor="@color/tintchange"
+                        android:textSize="36sp" />
+                </android.support.v7.widget.CardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/columnheader"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@id/header"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="30dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@color/header"
+                    android:gravity="center"
+                    android:text="@string/nam"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#fff" />
+
+                <TextView
+
+                    android:id="@+id/textView2"
+                    android:layout_width="30dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@color/header"
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:text="@string/profile"
+                    android:textColor="#fff"
+                    />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="30dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@color/header"
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:text="@string/date"
+                    android:textColor="#fff" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="30dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@color/header"
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:text="@string/in"
+                    android:textColor="#fff" />
+
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="30dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@color/header"
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:text="@string/gate"
+                    android:textColor="#fff" />
+
+
+            </LinearLayout>
+
+            <ListView
+                android:id="@+id/stafffetch"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/columnheader" />
+        </RelativeLayout>
+    </ScrollView>
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/scroll"
+        android:layout_alignParentBottom="false"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="?android:attr/windowBackground"
+        app:itemIconTint="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/navigation" />
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+     xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".visitor_latest">
+
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:id="@+id/visitornameL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/visitorname"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:background="@color/header"
+            android:gravity="center"
+            android:text=""
+            android:textColor="#fff"
+            android:textSize="16sp"
+
+            android:textStyle="bold"
+            android:visibility="visible" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dashL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/visitornameL"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/dashboard"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+
+            android:background="@drawable/rounded_corner"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="@string/go_to_dashboard"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_radio"
+        android:layout_below="@id/dashL"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp">
+
+
+        <RadioGroup
+            android:id="@+id/radiogroup1"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="true"
+                android:onClick="visitorlatest"
+                android:text="@string/latest_five"
+                android:textSize="18sp"
+                app:buttonTint="@color/header" />
+
+            <RadioButton
+                android:id="@+id/radioButtn2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="false"
+                android:onClick="visitorreport"
+                android:text="@string/visit_report"
+                android:textSize="18sp"
+                app:buttonTint="@color/header" />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <TableLayout
+        android:layout_below="@id/linear_radio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/l2"
+        android:visibility="invisible"
+        ></TableLayout>
+
+    <LinearLayout
+        android:id="@+id/l1"
+        android:layout_below="@id/l2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@color/header"
+            android:gravity="center"
+            android:text="@string/flat_visited"
+            android:textColor="#fff"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            />
+
+        <TextView
+
+            android:id="@+id/textView2"
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@color/header"
+            android:gravity="center"
+            android:text="@string/date"
+            android:textColor="#fff"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@color/header"
+            android:gravity="center"
+            android:text="@string/in_gate"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#fff" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@color/header"
+            android:gravity="center"
+            android:text="@string/out_gate"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#fff" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/l1"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/Nvisitorlastest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            />
+
+        <ListView
+            android:id="@+id/visitorlatest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </ListView>
+    </LinearLayout>
+</RelativeLayout>
+</ScrollView>

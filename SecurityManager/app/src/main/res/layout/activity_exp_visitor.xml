@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Exp_visitor">
+
+    <LinearLayout
+        android:id="@+id/gateLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/ReportColor"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtGateNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/headerText"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dividerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gateLayout"
+        android:layout_weight="2"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="2dp"
+            android:layout_weight="3"
+            android:background="@color/radio_button_unselected_color" />
+    </LinearLayout>
+
+    <!--<LinearLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dividerLayout"
+        android:layout_weight="1"
+        android:background="@color/ReportColor"
+        android:orientation="horizontal">-->
+
+        <!--<android.support.design.widget.TabLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:tabSelectedTextColor="@color/radio_button_unselected_color"
+            app:tabTextColor="@color/headerText">
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/CurrentTab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CURRENTLY IN" />
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/AllTab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ALL EXPECTED VISITORS" />
+
+        </android.support.design.widget.TabLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/searchLyout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tabLayout"
+        android:orientation="horizontal">
+
+        <SearchView
+            android:id="@+id/esearch"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"></SearchView>
+
+    </LinearLayout>-->
+    <LinearLayout
+        android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/dividerLayout"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+
+        <SearchView
+            android:id="@+id/search_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:iconifiedByDefault="false"
+            android:padding="2dp"
+            android:queryHint="@string/search_by_name" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/search"
+        >
+
+        <ListView
+            android:id="@+id/expeVisitor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

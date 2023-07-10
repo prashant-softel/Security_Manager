@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".visitordetails">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/headgate"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/header"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/GateNo"
+                android:layout_width="200dp"
+                android:layout_height="25dp"
+                android:layout_weight="1"
+                android:background="@color/header"
+                android:gravity="right"
+                android:textStyle="bold"
+                android:paddingTop="5dp"
+                android:layout_marginRight="10dp"
+                android:paddingRight="20dp"
+                android:text="@string/gateno"
+                android:textColor="#fff"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/changegate"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_weight="1"
+                android:background="@color/header"
+                android:gravity="right"
+                android:paddingTop="5dp"
+                android:text="@string/change_gate"
+                android:textColor="#fff"
+                android:paddingRight="10dp"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/cardviewcontainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/headgate"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cd1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="7dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="5dp">
+
+
+
+                <LinearLayout
+                    android:id="@+id/ImageL"
+                    android:layout_width="100dp"
+                    android:layout_height="90dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical">
+
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/view2"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_centerHorizontal="true"
+                        android:elevation="12dp"
+                        android:innerRadius="0dp"
+                        android:shape="ring"
+                        android:thicknessRatio="1.9"
+                        app:cardCornerRadius="40dp">
+
+                        <ImageView
+                            android:id="@+id/image1"
+                            android:layout_width="78dp"
+                            android:layout_height="80dp" />
+
+
+                    </android.support.v7.widget.CardView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/la1"
+                    android:layout_alignLeft="@id/ImageL"
+                    android:layout_marginLeft="100dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/txtName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:paddingLeft="5dp"
+                        android:text="@string/name"
+                        android:textColor="@color/tintchange"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:paddingStart="20dp"
+                        android:paddingLeft="20dp"
+                        android:paddingEnd="5dp"
+                        android:paddingRight="5dp"
+                        android:textColor="@color/tintchange"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/la1"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_alignLeft="@id/ImageL"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="100dp"
+                    android:layout_marginTop="40dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/txtcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="20dp"
+                        android:paddingLeft="5dp"
+                        android:text="@string/contact_no"
+                        android:textSize="18sp"
+                        android:textColor="@color/tintchange"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/contact"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="5dp"
+                        android:textColor="@color/header"
+                        android:textSize="18sp" />
+                </LinearLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:id="@+id/Lpurpose"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="110dp"
+                        android:layout_marginBottom="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/txtpurpose"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:paddingLeft="15dp"
+                            android:text="@string/purpose"
+                            android:textColor="@color/tintchange"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/purpose"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textSize="18sp"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:paddingLeft="20dp"
+                            android:paddingRight="5dp"
+                            android:textColor="@color/tintchange" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/Lcompany"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/Lpurpose"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/txtcompany"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:textSize="18sp"
+                            android:paddingLeft="15dp"
+                            android:text="@string/company_name"
+                            android:textColor="@color/tintchange"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/company"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textSize="18sp"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:paddingLeft="20dp"
+                            android:paddingRight="5dp"
+                            android:textColor="@color/tintchange" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/Lvehicle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/Lcompany"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/txtvehicle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:textSize="18sp"
+                            android:paddingLeft="15dp"
+                            android:text="@string/vehicle_no"
+                            android:textColor="@color/tintchange"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/vehicle"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textSize="18sp"
+                            android:layout_marginRight="5dp"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:paddingLeft="20dp"
+                            android:paddingRight="5dp"
+                            android:textColor="@color/tintchange" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/Lindate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/Lvehicle"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/txtindate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:paddingLeft="15dp"
+                            android:textSize="18sp"
+                            android:text="@string/in_date"
+                            android:textColor="@color/tintchange"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/indate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:paddingLeft="20dp"
+                            android:paddingRight="5dp"
+                            android:textColor="@color/tintchange" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/Lintime"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/Lindate"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/txtintime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:paddingLeft="15dp"
+                            android:textSize="18sp"
+                            android:text="@string/in_time"
+                            android:textColor="@color/tintchange"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/intime"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textSize="18sp"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:paddingLeft="20dp"
+                            android:paddingRight="5dp"
+                            android:textColor="@color/tintchange" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/Lentrygateno"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/Lintime"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/txtentrygateno"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:textSize="18sp"
+                            android:paddingLeft="15dp"
+                            android:text="@string/entry_gate_no"
+                            android:textColor="@color/tintchange"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/entrygateno"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textSize="18sp"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:paddingLeft="20dp"
+                            android:paddingRight="5dp"
+                            android:textColor="@color/tintchange" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/Loutdate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/Lentrygateno"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/txtoutdate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:textSize="18sp"
+                            android:paddingLeft="15dp"
+                            android:text="@string/out_date"
+                            android:textColor="@color/tintchange"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/outdate"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textSize="18sp"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:paddingLeft="20dp"
+                            android:paddingRight="5dp"
+                            android:textColor="@color/tintchange" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/Louttime"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/Loutdate"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/txtoutime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:textSize="18sp"
+                            android:paddingLeft="15dp"
+                            android:text="@string/out_time"
+                            android:textColor="@color/tintchange"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/outtime"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textSize="18sp"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:paddingLeft="20dp"
+                            android:paddingRight="5dp"
+                            android:textColor="@color/tintchange" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/Lexitgate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/Louttime"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:showDividers="middle">
+
+                        <TextView
+                            android:id="@+id/txtexitgate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:textSize="18sp"
+                            android:paddingLeft="15dp"
+                            android:text="@string/exit_gate_no"
+                            android:textColor="@color/tintchange"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/exitgateno"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:textSize="18sp"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:paddingLeft="20dp"
+                            android:paddingRight="5dp"
+                            android:textColor="@color/tintchange" />
+
+                    </LinearLayout>
+
+
+                    <View
+                        android:id="@+id/view1"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@+id/Lexitgate"
+                        android:background="@color/black" />
+
+                    <ListView
+                        android:id="@+id/visitordetail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/view1" />
+
+
+                    <LinearLayout
+
+                        android:id="@+id/LbtnCheckout"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_below="@id/visitordetail"
+                        android:layout_marginBottom="15dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btncheckout"
+                            android:layout_width="150dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            android:layout_weight="1"
+                            android:background="@color/colred"
+                            android:onClick="checkout"
+                            android:text="CHECK OUT"
+                            android:textColor="#fff" />
+
+
+                        <Button
+                            android:id="@+id/btnsilentout"
+                            android:layout_width="150dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            android:layout_weight="1"
+                            android:background="@color/colred"
+                            android:onClick="silentout"
+                            android:text="SILENT OUT"
+                            android:textColor="#fff" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+            <RelativeLayout
+                android:id="@+id/latest"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_below="@id/cardviewcontainer"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center_horizontal|center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnviewlatest"
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:background="@color/colorPrimary"
+                    android:text="VIEW LATEST HISTORY"
+                    android:onClick="viewlatest"
+                    android:textColor="#fff" />
+            </RelativeLayout>
+
+
+    </LinearLayout>
+</ScrollView>
