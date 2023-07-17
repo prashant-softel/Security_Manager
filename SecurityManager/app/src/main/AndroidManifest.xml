@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.securitymanager.securitymanager">
+    package="com.softel.securitymanager.securitymanager">
 
     <application
-        android:name=".a_variable"
+        android:name="com.softel.securitymanager.securitymanager.a_variable"
         android:allowBackup="true"
         android:hardwareAccelerated="false"
         android:icon="@mipmap/icon"
@@ -14,10 +14,10 @@
         android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".QRScannerActivity"
+        <activity android:name="com.softel.securitymanager.securitymanager.QRScannerActivity"
             android:windowSoftInputMode="stateHidden|adjustResize"/>
         <activity
-            android:name=".LoginPage"
+            android:name="com.softel.securitymanager.securitymanager.LoginPage"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize">
             <intent-filter>
@@ -28,126 +28,126 @@
         </activity>
 
         <activity
-            android:name=".homepage"
+            android:name="com.softel.securitymanager.securitymanager.homepage"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".About"
-            android:parentActivityName=".homepage"
+            android:name="com.softel.securitymanager.securitymanager.About"
+            android:parentActivityName="com.softel.securitymanager.securitymanager.homepage"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".VisitorEntry"
-            android:parentActivityName=".homepage"
+            android:name="com.softel.securitymanager.securitymanager.VisitorEntry"
+            android:parentActivityName="com.softel.securitymanager.securitymanager.homepage"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name=".VisitorExit"
-            android:parentActivityName=".homepage"
+            android:name="com.softel.securitymanager.securitymanager.VisitorExit"
+            android:parentActivityName="com.softel.securitymanager.securitymanager.homepage"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name=".News"
-            android:parentActivityName=".homepage"
+            android:name="com.softel.securitymanager.securitymanager.News"
+            android:parentActivityName="com.softel.securitymanager.securitymanager.homepage"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Setting"
-            android:parentActivityName=".homepage"
+            android:name="com.softel.securitymanager.securitymanager.Setting"
+            android:parentActivityName="com.softel.securitymanager.securitymanager.homepage"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name=".Exp_visitor"
-            android:parentActivityName=".homepage"
+            android:name="com.softel.securitymanager.securitymanager.Exp_visitor"
+            android:parentActivityName="com.softel.securitymanager.securitymanager.homepage"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".allstafflistactivity"
-            android:parentActivityName=".staff_exit"
+            android:name="com.softel.securitymanager.securitymanager.allstafflistactivity"
+            android:parentActivityName="com.softel.securitymanager.securitymanager.staff_exit"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".staff_latest"
+            android:name="com.softel.securitymanager.securitymanager.staff_latest"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".staff_exit"
-            android:parentActivityName=".homepage"
+            android:name="com.softel.securitymanager.securitymanager.staff_exit"
+            android:parentActivityName="com.softel.securitymanager.securitymanager.homepage"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name=".staffview"
-            android:parentActivityName=".staff_exit"
+            android:name="com.softel.securitymanager.securitymanager.staffview"
+            android:parentActivityName="com.softel.securitymanager.securitymanager.staff_exit"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".total_staffexit"
-            android:parentActivityName=".staff_exit"
+            android:name="com.softel.securitymanager.securitymanager.total_staffexit"
+            android:parentActivityName="com.softel.securitymanager.securitymanager.staff_exit"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".staff_add"
-            android:parentActivityName=".staff_exit"
+            android:name="com.softel.securitymanager.securitymanager.staff_add"
+            android:parentActivityName="com.softel.securitymanager.securitymanager.staff_exit"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name=".addnews"
-            android:parentActivityName=".homepage"
+            android:name="com.softel.securitymanager.securitymanager.addnews"
+            android:parentActivityName="com.softel.securitymanager.securitymanager.homepage"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".visitordetails"
-            android:parentActivityName=".VisitorExit"
+            android:name="com.softel.securitymanager.securitymanager.visitordetails"
+            android:parentActivityName="com.softel.securitymanager.securitymanager.VisitorExit"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".visitor_latest"
+            android:name="com.softel.securitymanager.securitymanager.visitor_latest"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".visitorreport"
-            android:parentActivityName=".VisitorExit"
+            android:name="com.softel.securitymanager.securitymanager.visitorreport"
+            android:parentActivityName="com.softel.securitymanager.securitymanager.VisitorExit"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".visitor_unit"
+            android:name="com.softel.securitymanager.securitymanager.visitor_unit"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name=".Staff_CheckIn"
+            android:name="com.softel.securitymanager.securitymanager.Staff_CheckIn"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name=".Welcome_staff"
-            android:parentActivityName=".Staff_Entry"
+            android:name="com.softel.securitymanager.securitymanager.Welcome_staff"
+            android:parentActivityName="com.softel.securitymanager.securitymanager.Staff_Entry"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Staff_Entry"
-            android:parentActivityName=".homepage"
+            android:name="com.softel.securitymanager.securitymanager.Staff_Entry"
+            android:parentActivityName="com.softel.securitymanager.securitymanager.homepage"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name=".welcomevisit"
+            android:name="com.softel.securitymanager.securitymanager.welcomevisit"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".stafftotaldetail"
-            android:parentActivityName=".total_staffexit"
+            android:name="com.softel.securitymanager.securitymanager.stafftotaldetail"
+            android:parentActivityName="com.softel.securitymanager.securitymanager.total_staffexit"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SOSAlert"
-            android:parentActivityName=".homepage" />
+            android:name="com.softel.securitymanager.securitymanager.SOSAlert"
+            android:parentActivityName="com.softel.securitymanager.securitymanager.homepage" />
         <activity
-            android:name=".CheckPostMaster"
-            android:parentActivityName=".homepage"
+            android:name="com.softel.securitymanager.securitymanager.CheckPostMaster"
+            android:parentActivityName="com.softel.securitymanager.securitymanager.homepage"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CheckPost"
-            android:parentActivityName=".CheckPostMaster"
+            android:name="com.softel.securitymanager.securitymanager.CheckPost"
+            android:parentActivityName="com.softel.securitymanager.securitymanager.CheckPostMaster"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Round"
-            android:parentActivityName=".CheckPost"
+            android:name="com.softel.securitymanager.securitymanager.Round"
+            android:parentActivityName="com.softel.securitymanager.securitymanager.CheckPost"
             android:screenOrientation="portrait" />
         <!--<activity
             android:name=".schedule_list"
             android:parentActivityName=".homepage"
             android:screenOrientation="portrait" />-->
         <activity
-            android:name=".CheckPostView"
-            android:parentActivityName=".CheckPostMaster"
+            android:name="com.softel.securitymanager.securitymanager.CheckPostView"
+            android:parentActivityName="com.softel.securitymanager.securitymanager.CheckPostMaster"
             android:screenOrientation="portrait" />
 
-        <activity android:name=".RoundQRScanner"></activity>
+        <activity android:name="com.softel.securitymanager.securitymanager.RoundQRScanner"></activity>
 
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
