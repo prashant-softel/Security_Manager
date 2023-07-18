@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "512597187211",
+    "firebase_url": "https://ionic-62f7f.firebaseio.com",
+    "project_id": "ionic-62f7f",
+    "storage_bucket": "ionic-62f7f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:512597187211:android:38d423f8808c7210",
+        "android_client_info": {
+          "package_name": "com.ionicframework.firebasepushTrainig"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "512597187211-fspurvu5ispnbpb0e92dott27ia3c5k5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4ANvvhbxl5MWvJ0N8qbdBNEpu-5r8f5w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "512597187211-fspurvu5ispnbpb0e92dott27ia3c5k5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:512597187211:android:5cc8022c348f3d6155928e",
+        "android_client_info": {
+          "package_name": "com.softel.securitymanager.securitymanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "512597187211-fspurvu5ispnbpb0e92dott27ia3c5k5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4ANvvhbxl5MWvJ0N8qbdBNEpu-5r8f5w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "512597187211-fspurvu5ispnbpb0e92dott27ia3c5k5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

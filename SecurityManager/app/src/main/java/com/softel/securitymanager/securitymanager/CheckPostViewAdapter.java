@@ -1,8 +1,8 @@
 package com.softel.securitymanager.securitymanager;
 import android.content.Context;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentManager;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentManager;
 
 public class CheckPostViewAdapter extends FragmentPagerAdapter {
 

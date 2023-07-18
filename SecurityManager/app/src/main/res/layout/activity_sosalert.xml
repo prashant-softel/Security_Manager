@@ -16,7 +16,7 @@
         android:orientation="vertical"
         android:visibility="gone">
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
@@ -262,7 +262,7 @@
                 </LinearLayout>
 
             </RelativeLayout>
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
 
     </LinearLayout>
@@ -277,7 +277,7 @@
         android:orientation="vertical"
         android:visibility="gone">
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
@@ -549,7 +549,7 @@
                 </LinearLayout>
 
             </RelativeLayout>
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
 
     </LinearLayout>
@@ -564,7 +564,7 @@
         android:orientation="vertical"
         android:visibility="gone">
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
@@ -836,7 +836,7 @@
                 </LinearLayout>
 
             </RelativeLayout>
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
     </LinearLayout>
     <!-- Theft other SOS Alert Section -->
     <LinearLayout
@@ -849,7 +849,7 @@
         android:orientation="vertical"
         android:visibility="gone">
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
@@ -1096,6 +1096,6 @@
                 </LinearLayout>
 
             </RelativeLayout>
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
     </LinearLayout>
 </RelativeLayout>

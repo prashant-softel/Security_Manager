@@ -57,6 +57,11 @@ public class LoginPage extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Initialize Firebase Crashlytics
+//        FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(true);
+
+
         setContentView(R.layout.activity_login_page);
         session=new Session(getApplicationContext());
         PreferenceServices.init(this);
@@ -107,6 +112,9 @@ public class LoginPage extends Activity {
 
             @Override
             public void onClick(View arg0) {
+//                if(true){
+//                    throw new RuntimeException("Test Crash"); // Force a cras
+//                }
                 btn_login.setEnabled(false);
 
                 if(uname.getText().toString().length()==0)

@@ -54,7 +54,7 @@
                 android:orientation="vertical"
                 android:paddingTop="30dp">
 
-                <android.support.design.widget.TextInputLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -67,9 +67,9 @@
                         android:singleLine="true"
 
                         android:textColorLink="@android:color/darker_gray" />
-                </android.support.design.widget.TextInputLayout>
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <android.support.design.widget.TextInputLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -83,7 +83,7 @@
                         android:inputType="textPassword"
                         android:singleLine="true"
                         android:textColorLink="@android:color/darker_gray" />
-                </android.support.design.widget.TextInputLayout>
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <!--<TextView
                 android:layout_width="wrap_content"
