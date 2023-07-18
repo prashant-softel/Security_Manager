@@ -27,6 +27,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.*;
 
+import com.google.firebase.crashlytics.FirebaseCrashlytics;
 import com.softel.securitymanager.Util.PreferenceServices;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -59,7 +60,7 @@ public class LoginPage extends Activity {
         super.onCreate(savedInstanceState);
 
         // Initialize Firebase Crashlytics
-//        FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(true);
+        FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(true);
 
 
         setContentView(R.layout.activity_login_page);
