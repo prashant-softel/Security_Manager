@@ -26,6 +26,8 @@ public class ServiceProviderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	String projectUrl = "/NewSecurityManagerWeb";
+
+	private int unit_id;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -73,7 +75,7 @@ public class ServiceProviderServlet extends HttpServlet {
 			else if(str.equals(projectUrl+"/ServiceProvider/fetchUnits"))
 			{
 				
-				HashMap objHash = objServProvider.mUnitList();
+				HashMap objHash = objServProvider.mUnitList(unit_id);
 				Gson objGson = new Gson();
 				String objStr = objGson.toJson(objHash);
 				response.setContentType("application/json");

@@ -128,7 +128,7 @@ public class ServiceProvider extends CommonBaseClass
 	
 	//GET UNIT LIST
 	//public static HashMap<Integer, Map<String, Object>> mUnitList(int iWingID)
-	public  HashMap<Integer, Map<String, Object>> mUnitList()
+	public  HashMap<Integer, Map<String, Object>> mUnitList(int unit_id)
 	{
 		HashMap rows = new HashMap<>();
 		HashMap rows2 = new HashMap<>();
@@ -136,12 +136,16 @@ public class ServiceProvider extends CommonBaseClass
 		try
 		{
 			dbop_soc =new DbOperations(DB_SOCIETY);
-			String sSqlMemberMain = "";
+			String sSqlMemberMain = "";	
+			String dnd_fetchdata  = "";
 			//sSqlMemberMain = "select unit.`unit_no`,unit.`unit_id`,mem.owner_name,mem.mob from `unit` JOIN `member_main` as mem on unit.unit_id=mem.unit where unit.wing_id='"+iWingID+"' and mem.ownership_status = '1'";
 			sSqlMemberMain = "select unit.`unit_no`,unit.`unit_id`,unit.`wing_id`,mem.owner_name,mem.mob,concat_ws(' ',tm.tenant_name,tm.tenant_LName) as tenant_name,tm.mobile_no,tm.status,IF(tm.tenant_name != '','1','0') 'has_tenant',IF(tm.end_date >  CURDATE(), '1', '0') as tenant_active from `unit`  left join tenant_module as tm on  tm.unit_id = unit.unit_id left JOIN `member_main` as mem on unit.unit_id=mem.unit where mem.ownership_status = '1' ORDER BY `unit`.`sort_order`  ASC";
 			System.out.println("Query : " + sSqlMemberMain );
 			HashMap<Integer, Map<String, Object>> mMemberList = dbop_soc.Select(sSqlMemberMain);
 			System.out.println("Output : " + mMemberList);
+			dnd_fetchdata = "SELECT * from dnd_status where unit_id='"+ unit_id +"'";
+			System.out.println("Query : " + dnd_fetchdata);
+			HashMap<Integer, Map<String, Object>> dnd_data = dbop_soc.Select(dnd_fetchdata);
 			for(Entry<Integer, Map<String, Object>> entry1 : mMemberList.entrySet()) 
 			{
 				if(entry1.getValue().get("has_tenant").equals("1") && entry1.getValue().get("tenant_active").equals("1"))
@@ -203,6 +207,20 @@ public class ServiceProvider extends CommonBaseClass
 			{
 				//member not found
 				 rows2.put("member","");
+				 rows.put("success",0);
+				 rows.put("response",rows2);
+			}
+			if(dnd_data.size() > 0)
+			{
+				//fetch DND_data
+				 rows2.put("DND_message",MapUtility.HashMaptoList(dnd_data));
+				 rows.put("success",1);
+				 rows.put("response",rows2);			 
+			}
+			else
+			{
+				//DND_data not found
+				 rows2.put("DND_message","");
 				 rows.put("success",0);
 				 rows.put("response",rows2);
 			}	 
@@ -778,7 +796,9 @@ public class ServiceProvider extends CommonBaseClass
 		ServiceProvider sp = new ServiceProvider(sToken);
 
 		 
-		HashMap objHash = sp.mFetchExpVisitor(59);
+//		HashMap objHash = sp.mFetchExpVisitor(59);
+		int unit_id = 16;
+		HashMap objHash = sp.mUnitList(unit_id);
 		//HashMap objHash=sp.mFetchExpVisitor(59);
 		//HashMap objHash=sp.mPurposeList();
 		//sp.mUnitList();
