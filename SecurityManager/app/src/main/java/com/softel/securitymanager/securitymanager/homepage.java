@@ -222,7 +222,7 @@ public class homepage extends AppCompatActivity implements NavigationView.OnNavi
                             public void run() {
                                if(startThread.equals("0")) {
                                     count++;
-                                    //new getSOS().execute();
+                                    new getSOS().execute();
                                 }
                                 else if(startThread.equals("1"))
                                 {

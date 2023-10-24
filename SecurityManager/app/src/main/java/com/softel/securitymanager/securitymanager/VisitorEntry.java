@@ -1,22 +1,35 @@
 package com.softel.securitymanager.securitymanager;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.ContentUris;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Environment;
+import android.os.ParcelFileDescriptor;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
+
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
 import androidx.appcompat.app.AlertDialog;
@@ -49,6 +62,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.io.FileDescriptor;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -64,7 +78,7 @@ import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Response;
 
-public class VisitorEntry extends ActivityManagePermission {
+public class VisitorEntry extends AppCompatActivity {
 
     String imagepath = "";
     File cover;
@@ -164,6 +178,13 @@ public class VisitorEntry extends ActivityManagePermission {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visitor_entry);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED || checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    == PackageManager.PERMISSION_DENIED){
+                String[] permission = {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                requestPermissions(permission, 112);
+            }
+        }
         setTitle(getString(R.string.visitor_entry));
         /* --    back button code ---- */
      //   getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -2633,11 +2654,12 @@ public class VisitorEntry extends ActivityManagePermission {
                                 break;
                             case 2:
                                 visitortrace = "1";
-                                if (Build.VERSION.SDK_INT >= 23) {
-                                    CropImage.startPickImageActivity(VisitorEntry.this);
-                                } else {
-                                    captureImage();
-                                }
+                                openCamera();
+//                                if (Build.VERSION.SDK_INT >= 23) {
+//                                    CropImage.startPickImageActivity(VisitorEntry.this);
+//                                } else {
+//                                    captureImage();
+//                                }
 
                                 break;
                         }
@@ -2660,4 +2682,68 @@ public class VisitorEntry extends ActivityManagePermission {
 
         }
     }
+
+
+    Uri image_uri;
+    //TODO opens camera so that user can capture image
+    private void openCamera() {
+        ContentValues values = new ContentValues();
+        values.put(MediaStore.Images.Media.TITLE, "New Picture");
+        values.put(MediaStore.Images.Media.DESCRIPTION, "From the Camera");
+        image_uri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, image_uri);
+        cameraActivityResultLauncher.launch(cameraIntent);
+    }
+
+    //TODO capture the image using camera and display it
+    ActivityResultLauncher<Intent> cameraActivityResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        Bitmap inputImage = uriToBitmap(image_uri);
+                        Bitmap rotated = rotateBitmap(inputImage);
+//                        staffImage.setImageBitmap(rotated);
+//                        staffImage.setImageURI(image_uri);
+//                        Uri imageUri = CropImage.getPickImageResultUri(this, image_uri);
+                        startCropImageAcitivity(image_uri);
+
+                    }
+                }
+            });
+
+    //TODO takes URI of the image and returns bitmap
+    private Bitmap uriToBitmap(Uri selectedFileUri) {
+        try {
+            ParcelFileDescriptor parcelFileDescriptor =
+                    getContentResolver().openFileDescriptor(selectedFileUri, "r");
+            FileDescriptor fileDescriptor = parcelFileDescriptor.getFileDescriptor();
+            Bitmap image = BitmapFactory.decodeFileDescriptor(fileDescriptor);
+            parcelFileDescriptor.close();
+            return image;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return  null;
+    }
+
+    //TODO rotate image if image captured on samsung devices
+    //TODO Most phone cameras are landscape, meaning if you take the photo in portrait, the resulting photos will be rotated 90 degrees.
+    @SuppressLint("Range")
+    public Bitmap rotateBitmap(Bitmap input){
+        String[] orientationColumn = {MediaStore.Images.Media.ORIENTATION};
+        Cursor cur = getContentResolver().query(image_uri, orientationColumn, null, null, null);
+        int orientation = -1;
+        if (cur != null && cur.moveToFirst()) {
+            orientation = cur.getInt(cur.getColumnIndex(orientationColumn[0]));
+        }
+        Log.d("tryOrientation",orientation+"");
+        Matrix rotationMatrix = new Matrix();
+        rotationMatrix.setRotate(orientation);
+        Bitmap cropped = Bitmap.createBitmap(input,0,0, input.getWidth(), input.getHeight(), rotationMatrix, true);
+        return cropped;
+    }
+
 }
