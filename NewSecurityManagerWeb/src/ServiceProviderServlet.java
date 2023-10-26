@@ -27,7 +27,7 @@ public class ServiceProviderServlet extends HttpServlet {
 	
 	String projectUrl = "/NewSecurityManagerWeb";
 
-	private int unit_id;
+	
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -53,7 +53,7 @@ public class ServiceProviderServlet extends HttpServlet {
 		try 
 		{
 			String str = request.getRequestURI();
-			String sToken = request.getParameter("token").trim();			
+			String sToken = request.getParameter("token").trim();	
 			objServProvider =  new ServiceProvider(sToken);
 
 			if(str.equals(projectUrl+ "/ServiceProvider/fetchDocuments"))
@@ -74,8 +74,9 @@ public class ServiceProviderServlet extends HttpServlet {
 			}
 			else if(str.equals(projectUrl+"/ServiceProvider/fetchUnits"))
 			{
-				
-				HashMap objHash = objServProvider.mUnitList(unit_id);
+				int unitId = Integer.parseInt(request.getParameter("unit_id"));
+
+				HashMap objHash = objServProvider.mUnitList(unitId);
 				Gson objGson = new Gson();
 				String objStr = objGson.toJson(objHash);
 				response.setContentType("application/json");

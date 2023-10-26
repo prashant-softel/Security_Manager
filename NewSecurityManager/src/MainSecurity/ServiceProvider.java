@@ -135,6 +135,7 @@ public class ServiceProvider extends CommonBaseClass
 		
 		try
 		{
+			dbop_sec = new DbOperations(DB_SECURITY);
 			dbop_soc =new DbOperations(DB_SOCIETY);
 			String sSqlMemberMain = "";	
 			String dnd_fetchdata  = "";
@@ -144,8 +145,9 @@ public class ServiceProvider extends CommonBaseClass
 			HashMap<Integer, Map<String, Object>> mMemberList = dbop_soc.Select(sSqlMemberMain);
 			System.out.println("Output : " + mMemberList);
 			dnd_fetchdata = "SELECT * from dnd_status where unit_id='"+ unit_id +"'";
-			System.out.println("Query : " + dnd_fetchdata);
-			HashMap<Integer, Map<String, Object>> dnd_data = dbop_soc.Select(dnd_fetchdata);
+			System.out.println("Query of dnd_status : " + dnd_fetchdata);
+			HashMap<Integer, Map<String, Object>> dnd_data = dbop_sec.Select(dnd_fetchdata);
+			System.out.println("dnd_output:" +dnd_data);
 			for(Entry<Integer, Map<String, Object>> entry1 : mMemberList.entrySet()) 
 			{
 				if(entry1.getValue().get("has_tenant").equals("1") && entry1.getValue().get("tenant_active").equals("1"))
@@ -792,7 +794,7 @@ public class ServiceProvider extends CommonBaseClass
 	///
 	public static void main(String[] args) //throws Exception
 	{
-		String sToken = "7OcsNHBSGr5lCZlc5Hb7rITIRR-MAhiGmRjszjyvLwDdLOar-X5orYtpfvcVXDF0WUk8wi9HL3tXgH26rnQ_qa8lsdKB6KdgP-PclmV3X9LxnXMA7U8ZH3PAYsqOwhuDdfl2Skj-_ht3gA0N_Od8oWpYoTQuS99G7a5U21fT2dxpEh0JrMhL7hVMaeZ795Vx";
+		String sToken = "76B7-jneLIem3XLCV5XzuuB3ODaHSWlO8EsJEK2cbf5kGp24nMYOJu9Kivw0SUZj30Z1w5wS8Ui6UWkKgB8xv0Brs3LbMxf96NwPdOV8-nulUoe58BQiocZdY8RMoHul8ZDTVl7ZHug6yJdE4BotrXLyTz2568s3OolxMTm5nulHrjuUR1sgerj0PiI2X1Yv";
 		ServiceProvider sp = new ServiceProvider(sToken);
 
 		 
