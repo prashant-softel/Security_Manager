@@ -74,9 +74,9 @@ public class ServiceProviderServlet extends HttpServlet {
 			}
 			else if(str.equals(projectUrl+"/ServiceProvider/fetchUnits"))
 			{
-				int unitId = Integer.parseInt(request.getParameter("unit_id"));
+				
 
-				HashMap objHash = objServProvider.mUnitList(unitId);
+				HashMap objHash = objServProvider.mUnitList();
 				Gson objGson = new Gson();
 				String objStr = objGson.toJson(objHash);
 				response.setContentType("application/json");

@@ -128,7 +128,7 @@ public class ServiceProvider extends CommonBaseClass
 	
 	//GET UNIT LIST
 	//public static HashMap<Integer, Map<String, Object>> mUnitList(int iWingID)
-	public  HashMap<Integer, Map<String, Object>> mUnitList(int unit_id)
+	public  HashMap<Integer, Map<String, Object>> mUnitList()
 	{
 		HashMap rows = new HashMap<>();
 		HashMap rows2 = new HashMap<>();
@@ -144,7 +144,7 @@ public class ServiceProvider extends CommonBaseClass
 			System.out.println("Query : " + sSqlMemberMain );
 			HashMap<Integer, Map<String, Object>> mMemberList = dbop_soc.Select(sSqlMemberMain);
 			System.out.println("Output : " + mMemberList);
-			dnd_fetchdata = "SELECT * from dnd_status where unit_id='"+ unit_id +"'";
+			dnd_fetchdata = "SELECT dnd_id, unit_no, dnd_type, unit_id, dnd_msg from dnd_status where status=1";
 			System.out.println("Query of dnd_status : " + dnd_fetchdata);
 			HashMap<Integer, Map<String, Object>> dnd_data = dbop_sec.Select(dnd_fetchdata);
 			System.out.println("dnd_output:" +dnd_data);
@@ -208,21 +208,21 @@ public class ServiceProvider extends CommonBaseClass
 			else
 			{
 				//member not found
-				 rows2.put("member","");
+				 rows2.put("member", MapUtility.HashMaptoList(mMemberList));
 				 rows.put("success",0);
 				 rows.put("response",rows2);
 			}
 			if(dnd_data.size() > 0)
 			{
 				//fetch DND_data
-				 rows2.put("DND_message",MapUtility.HashMaptoList(dnd_data));
+				 rows2.put("DND_record",MapUtility.HashMaptoList(dnd_data));
 				 rows.put("success",1);
 				 rows.put("response",rows2);			 
 			}
 			else
 			{
 				//DND_data not found
-				 rows2.put("DND_message","");
+				 rows2.put("DND_record", MapUtility.HashMaptoList(dnd_data));
 				 rows.put("success",0);
 				 rows.put("response",rows2);
 			}	 
@@ -794,13 +794,13 @@ public class ServiceProvider extends CommonBaseClass
 	///
 	public static void main(String[] args) //throws Exception
 	{
-		String sToken = "76B7-jneLIem3XLCV5XzuuB3ODaHSWlO8EsJEK2cbf5kGp24nMYOJu9Kivw0SUZj30Z1w5wS8Ui6UWkKgB8xv0Brs3LbMxf96NwPdOV8-nulUoe58BQiocZdY8RMoHul8ZDTVl7ZHug6yJdE4BotrXLyTz2568s3OolxMTm5nulHrjuUR1sgerj0PiI2X1Yv";
+		String sToken = "EQzEF1UnQbYZdrk5dFRcuQU9DGwgyPk697yXHwWzb5_hmlJafOUriaboJxxSE7vgsd_SMFsq6AEalFMdTyiW_2W0LIvGJME4IFQ8VftuHLudFt9G1EAgJNS9BXD_wAg8K8FRjUqVMe5vAYebCu7EZQyqjINQiB_DpvNnK8jPbwVaTDLXB6I3a6HiIdsckyqO";
 		ServiceProvider sp = new ServiceProvider(sToken);
 
 		 
 //		HashMap objHash = sp.mFetchExpVisitor(59);
 		int unit_id = 16;
-		HashMap objHash = sp.mUnitList(unit_id);
+		HashMap objHash = sp.mUnitList();
 		//HashMap objHash=sp.mFetchExpVisitor(59);
 		//HashMap objHash=sp.mPurposeList();
 		//sp.mUnitList();
