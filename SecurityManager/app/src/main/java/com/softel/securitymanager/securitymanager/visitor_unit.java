@@ -77,6 +77,9 @@ public class visitor_unit extends AppCompatActivity {
     MediaPlayer incomingmsgSoundMediaPlayerapproved = null;
     MediaPlayer incomingmsgSoundMediaPlayerdenied = null;
 
+
+    public boolean isDataLoaded= false;
+
     private Uri fileUri;
     private String postPath;
     private String mediaPath;
@@ -91,13 +94,13 @@ public class visitor_unit extends AppCompatActivity {
 
     private LinearLayout Lsendforapproval, Lsendforapproval1, Lsendforapproval2, Lsendforapproval3;
     String sendapprovcount = "0", sendapprovcount1 = "0", sendapprovcount2 = "0";
-    private TextView txt_sendforapproval, txt_sendforapproval1, txt_sendforapproval2, txt_sendforapproval3;
+    private TextView txt_sendforapproval, txt_sendforapproval1, txt_sendforapproval2, txt_sendforapproval3,txt_dndMessage,txt_dndMessage1,txt_dndMessage2,txt_dndMessage3;
     private RadioButton segButtonA1, segButtonA2, segButtonA3, segButtonB1, segButtonB2, segButtonB3, segButtonC1, segButtonC2, segButtonC3, segButtonD1, segButtonD2, segButtonD3;
-    String unit1 = "", unit2 = "", unit3 = "", unit4 = "";
+    String unit1 = "", unit2 = "", unit3 = "", unit4 = "",dndMessage="";
     private TextView vAddMore;
     private TextView vDeleteUnit;
     private LinearLayout lMainLayout, lMainLayout1, lMainLayout2, documentlayout;
-    private LinearLayout mContactLayout, mContactLayout1, mContactLayout2, mContactLayout3;
+    private LinearLayout mContactLayout, mContactLayout1, mContactLayout2, mContactLayout3,mApprovalSection,mApprovalSection1,mApprovalSection2,mApprovalSection3;
     private RelativeLayout mreal, mreal1, mreal2, mreal3;
 
 
@@ -116,6 +119,8 @@ public class visitor_unit extends AppCompatActivity {
     SegmentedGroup seg;
     List<String> WingList;
     List<String> arrayListWings;
+    ArrayList<DND> dndList = new ArrayList<>();
+
     ArrayList<UnitCusttom> UnitList = new ArrayList<>();
     ArrayList<UnitCusttom> UnitList1 = new ArrayList<>();
     ArrayList<UnitCusttom> UnitList2 = new ArrayList<>();
@@ -213,6 +218,12 @@ public class visitor_unit extends AppCompatActivity {
         unittext3 = (TextView) findViewById(R.id.unittext3);
         Layout1 = (LinearLayout) findViewById(R.id.Layout1);
         Layout2 = (LinearLayout) findViewById(R.id.Layout2);
+
+        mApprovalSection = (LinearLayout) findViewById(R.id.approvalSection);
+        mApprovalSection1 = (LinearLayout) findViewById(R.id.approvalSection1);
+        mApprovalSection2 = (LinearLayout) findViewById(R.id.approvalSection2);
+        mApprovalSection3 = (LinearLayout) findViewById(R.id.approvalSection3);
+
 
         documentlayout = (LinearLayout) findViewById(R.id.DOCUPLOAD);
         documentlayout1 = (LinearLayout) findViewById(R.id.DOCUPLOAD1);
@@ -336,8 +347,14 @@ public class visitor_unit extends AppCompatActivity {
         segButtonD2 = (RadioButton) findViewById(R.id.segButtonD2);
         segButtonD3 = (RadioButton) findViewById(R.id.segButtonD3);
         Lsendforapproval3 = (LinearLayout) findViewById(R.id.Lsendforapproval3);
+//        Ldnd_msg = (LinearLayout) findViewById(R.id.dnd_msg);
+
         txt_sendforapproval3 = (TextView) findViewById(R.id.txtsendforproposal3);
 
+        txt_dndMessage = (TextView) findViewById(R.id.txtsdndMessage);
+        txt_dndMessage1 = (TextView) findViewById(R.id.txtsdndMessage1);
+        txt_dndMessage2 = (TextView) findViewById(R.id.txtsdndMessage2);
+        txt_dndMessage3 = (TextView) findViewById(R.id.txtsdndMessage3);
 
         mContactLayout = (LinearLayout) findViewById(R.id.ContactLayout);
         mContactLayout.setOnClickListener(new View.OnClickListener() {
@@ -1411,7 +1428,7 @@ public class visitor_unit extends AppCompatActivity {
         a = 0;
         b = 0;
         c = 0;
-        if (PreferenceServices.getInstance().getFlats().isEmpty()) {
+        if (PreferenceServices.getInstance().getFlats().isEmpty() || !isDataLoaded ) {
             new getUnit().execute(String.valueOf(id));
         } else {
             displayFlats(wingID);
@@ -1665,7 +1682,20 @@ public class visitor_unit extends AppCompatActivity {
                                 OwnerContact = unit.getOwnerContact();
                                 tunit_id = unit_id;
                                 unit2 = unit_id;
-
+                                dndMessage="";
+                                mContactLayoutw1.setVisibility(View.VISIBLE);
+                                mApprovalSection1.setVisibility(View.VISIBLE);
+                                txt_dndMessage1.setText(dndMessage);
+                                for( DND a : dndList) {
+                                    String UNIT_NO_AS_STRING = Integer.toString(a.getUnit_no());
+                                    String UNIT_ID_AS_STRING = Integer.toString(a.getUnit_id());
+                                    if (UNIT_NO_AS_STRING.equals(unit.getUnitNo()) && UNIT_ID_AS_STRING.equals(unit.getUnitId())) {
+                                        dndMessage=  a.getDnd_msg();
+                                        txt_dndMessage1.setText(a.getDnd_msg());
+                                        mContactLayoutw1.setVisibility(View.GONE);
+                                        mApprovalSection1.setVisibility(View.GONE);
+                                    }
+                                }
                                 contact1 = OwnerContact;
                                 String contactno = "";
                                 if (OwnerContact.length() > 0 && OwnerContact.length() > 4) {
@@ -1743,8 +1773,20 @@ public class visitor_unit extends AppCompatActivity {
                                 //UnitSelcetion.add(unit_id);
                                 tunit_id = unit_id;
                                 unit1 = unit_id;
-
-
+                                dndMessage="";
+                                mContactLayoutw.setVisibility(View.VISIBLE);
+                                mApprovalSection.setVisibility(View.VISIBLE);
+                                txt_dndMessage.setText(dndMessage);
+                                for( DND a : dndList) {
+                                    String UNIT_NO_AS_STRING = Integer.toString(a.getUnit_no());
+                                    String UNIT_ID_AS_STRING = Integer.toString(a.getUnit_id());
+                                    if (UNIT_NO_AS_STRING.equals(unit.getUnitNo()) && UNIT_ID_AS_STRING.equals(unit.getUnitId())) {
+                                        dndMessage=  a.getDnd_msg();
+                                        txt_dndMessage.setText(a.getDnd_msg());
+                                        mContactLayoutw.setVisibility(View.GONE);
+                                        mApprovalSection.setVisibility(View.GONE);
+                                    }
+                                }
                                 contact = OwnerContact;
                                 String contactno = "";
                                 if (OwnerContact.length() > 0 && OwnerContact.length() > 4) {
@@ -1825,6 +1867,21 @@ public class visitor_unit extends AppCompatActivity {
                                 tunit_id = unit_id;
                                 unit2 = unit_id;
 
+                                dndMessage="";
+                                mContactLayoutw2.setVisibility(View.VISIBLE);
+                                mApprovalSection2.setVisibility(View.VISIBLE);
+                                txt_dndMessage2.setText(dndMessage);
+                                for( DND a : dndList) {
+                                    String UNIT_NO_AS_STRING = Integer.toString(a.getUnit_no());
+                                    String UNIT_ID_AS_STRING = Integer.toString(a.getUnit_id());
+                                    if (UNIT_NO_AS_STRING.equals(unit.getUnitNo()) && UNIT_ID_AS_STRING.equals(unit.getUnitId())) {
+                                        dndMessage=  a.getDnd_msg();
+                                        txt_dndMessage2.setText(a.getDnd_msg());
+                                        mContactLayoutw2.setVisibility(View.GONE);
+                                        mApprovalSection2.setVisibility(View.GONE);
+                                    }
+                                }
+
 
                                 contact2 = OwnerContact;
                                 String contactno = "";
@@ -1904,7 +1961,20 @@ public class visitor_unit extends AppCompatActivity {
                                 //UnitSelcetion.add(unit_id);
                                 tunit_id = unit_id;
                                 unit3 = unit_id;
-
+                                dndMessage="";
+                                mContactLayoutw3.setVisibility(View.VISIBLE);
+                                mApprovalSection3.setVisibility(View.VISIBLE);
+                                txt_dndMessage3.setText(dndMessage);
+                                for( DND a : dndList) {
+                                    String UNIT_NO_AS_STRING = Integer.toString(a.getUnit_no());
+                                    String UNIT_ID_AS_STRING = Integer.toString(a.getUnit_id());
+                                    if (UNIT_NO_AS_STRING.equals(unit.getUnitNo()) && UNIT_ID_AS_STRING.equals(unit.getUnitId())) {
+                                        dndMessage=  a.getDnd_msg();
+                                        txt_dndMessage3.setText(a.getDnd_msg());
+                                        mContactLayoutw3.setVisibility(View.GONE);
+                                        mApprovalSection3.setVisibility(View.GONE);
+                                    }
+                                }
                                 contact3 = OwnerContact;
                                 String contactno = "";
                                 if (OwnerContact.length() > 0 && OwnerContact.length() > 4) {
@@ -2081,8 +2151,24 @@ public class visitor_unit extends AppCompatActivity {
                 Log.e("FLATSRESP:", result);
                 String success = obj.getString("success");
                 if (success.contains("1")) {
+                    isDataLoaded = true;
                     PreferenceServices.getInstance().setFlats(result);
+                    JSONObject jsonObject = obj.getJSONObject("response");
+                    JSONArray jArrayValue = new JSONArray(jsonObject.getString("member"));
+                    JSONArray dndArrayValue = new JSONArray(jsonObject.getString("DND_record"));
+                    for (int d = 0; d < dndArrayValue.length(); d++) {
+                        JSONObject main = dndArrayValue.getJSONObject(d);
+                        DND dnd = new DND();
+                        dnd.setDnd_msg(main.getString("dnd_msg"));
+                        dnd.setUnit_id(main.getInt("unit_id"));
+                        dnd.setUnit_no(main.getInt("unit_no"));
+                        dnd.setDnd_id(main.getInt("dnd_id"));
+                        dnd.setDnd_type(main.getInt("dnd_type"));
+                        dndList.add(dnd);
+                    }
+
                     displayFlats(wingID);
+
                 }
             } catch (Exception e) {
             }

@@ -8,6 +8,7 @@ public class UnitCusttom {
     private String WingId;
     private String Tenant_Name;
     private String Name;
+    private String dnd_msg;
 
     public UnitCusttom(String unitId, String ownerName, String unitNo,String ownerContact, String wingId) {
         UnitId = unitId;
@@ -83,5 +84,13 @@ public class UnitCusttom {
 
     public void setWingId(String wingId) {
         WingId = wingId;
+    }
+
+    public String getDnd_msg() {
+        return dnd_msg;
+    }
+
+    public void setDnd_msg(String dnd_msg) {
+        this.dnd_msg = dnd_msg;
     }
 }

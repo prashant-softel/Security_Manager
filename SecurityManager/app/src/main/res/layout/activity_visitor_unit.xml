@@ -13,6 +13,10 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:visibility="visible">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="egefhjbgejkdbgjkdfdkjbdfn"/>
 
         <ScrollView
             android:id="@+id/parenatsection"
@@ -27,16 +31,6 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginTop="20dp">
-
-                <!--<View
-                android:id="@+id/dividerLine"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_below="@+id/wingLayout"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
-                android:background="?android:attr/listDivider" />-->
-
                 <LinearLayout
                     android:id="@+id/DOCUPLOAD"
                     android:layout_width="match_parent"
@@ -160,7 +154,7 @@
                             android:layout_marginLeft="10dp"
                             android:layout_weight="1"
                             android:gravity="left"
-                            android:text="@string/wing"
+                            android:text="efgfdgdfgf"
                             android:textColor="@color/BlackText"
                             android:textSize="18sp"
                             android:textStyle="bold" />
@@ -245,12 +239,15 @@
                         android:orientation="horizontal"
                         android:visibility="gone">
 
-
-                        <ImageView
-                            android:id="@+id/phoneIcon"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:src="@android:drawable/stat_sys_phone_call_forward" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="jhgfhgfhggfh"/>
+<!--                        <ImageView-->
+<!--                            android:id="@+id/phoneIcon"-->
+<!--                            android:layout_width="30dp"-->
+<!--                            android:layout_height="30dp"-->
+<!--                            android:src="@android:drawable/stat_sys_phone_call_forward" />-->
 
                         <TextView
                             android:id="@+id/contactNo"
@@ -385,7 +382,7 @@
                             android:layout_marginLeft="10dp"
                             android:layout_weight="1"
                             android:gravity="left"
-                            android:text="@string/wing"
+                            android:text="dsfnbds wing"
                             android:textColor="@color/BlackText"
                             android:textSize="18sp"
                             android:textStyle="bold" />
@@ -606,7 +603,7 @@
                             android:layout_marginLeft="10dp"
                             android:layout_weight="1"
                             android:gravity="left"
-                            android:text="@string/wing"
+                            android:text="vf wing"
                             android:textColor="@color/BlackText"
                             android:textSize="18sp"
                             android:textStyle="bold" />
@@ -828,7 +825,7 @@
                             android:layout_marginLeft="10dp"
                             android:layout_weight="1"
                             android:gravity="left"
-                            android:text="@string/wing"
+                            android:text="reg gding"
                             android:textColor="@color/BlackText"
                             android:textSize="18sp"
                             android:textStyle="bold" />
@@ -1239,7 +1236,6 @@
                             android:visibility="visible">
 
                         </LinearLayout>
-
                         <Spinner
                             android:id="@+id/wingSpinnerw"
                             android:layout_width="match_parent"
@@ -1316,6 +1312,11 @@
 
                     </LinearLayout>
 
+                    <TextView
+                        android:id="@+id/txtsdndMessage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""/>
 
                     <LinearLayout
                         android:id="@+id/ContactLayoutw"
@@ -1347,6 +1348,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/ContactLayoutw"
+                        android:id="@+id/approvalSection"
                         android:orientation="vertical">
 
                         <RelativeLayout
@@ -1528,7 +1530,11 @@
                             android:paddingHorizontal="5dp"/>
 
                     </LinearLayout>
-
+                    <TextView
+                        android:id="@+id/txtsdndMessage1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""/>
                     <LinearLayout
                         android:id="@+id/ContactLayoutw1"
                         android:layout_width="match_parent"
@@ -1558,7 +1564,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/ContactLayoutw1"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:id="@+id/approvalSection1"
+                        >
 
                         <RelativeLayout
                             android:id="@+id/real1w"
@@ -1738,7 +1746,11 @@
 
                     </LinearLayout>
 
-
+                    <TextView
+                        android:id="@+id/txtsdndMessage2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""/>
                     <LinearLayout
                         android:id="@+id/ContactLayoutw2"
                         android:layout_width="match_parent"
@@ -1768,7 +1780,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/ContactLayoutw2"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:id="@+id/approvalSection2"
+                        >
 
                         <RelativeLayout
                             android:id="@+id/realw2"
@@ -1946,7 +1960,11 @@
                             android:paddingHorizontal="5dp"/>
 
                     </LinearLayout>
-
+                    <TextView
+                        android:id="@+id/txtsdndMessage3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""/>
                     <LinearLayout
                         android:id="@+id/ContactLayoutw3"
                         android:layout_width="match_parent"
@@ -1976,7 +1994,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/ContactLayoutw3"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:id="@+id/approvalSection3"
+                        >
 
                         <RelativeLayout
                             android:id="@+id/realw3"
