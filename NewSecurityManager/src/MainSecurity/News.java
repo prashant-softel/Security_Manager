@@ -109,7 +109,7 @@ public class News extends CommonBaseClass
 		HashMap<Integer, Map<String, Object>> FeaturesList = new HashMap<Integer, Map<String, Object>>();
 		try
 		{
-			Features = "Select * from feature_setting ";
+			Features = "Select * from feature_setting";
 			FeaturesList = dbop_sec.Select(Features);
 			
 			if(FeaturesList.size()>0)
@@ -129,7 +129,7 @@ public class News extends CommonBaseClass
 		{
 			e.printStackTrace();
 		}
-		//System.out.println(rows);
+		System.out.println(rows);
 		
 		return rows;
 	}
@@ -444,16 +444,74 @@ public class News extends CommonBaseClass
 		
 		return rows;
 	}
+	public  HashMap<Integer, Map<String, Object>> getDeviceId(int UnitId,int SocietyId)
+	{
+		HashMap rows = new HashMap<>();
+		HashMap rows2 = new HashMap<>();
+		String SelectQuery="";
+		
+		int loginId = 0;
+		String sMapID="";
+		HashMap<Integer, Map<String, Object>> loginDetails = new HashMap<Integer, Map<String, Object>>();
+		try
+		{
+			//if(SubmitType == 1)
+			//{
+			dbop_soc_root = new DbOperations(DB_ROOT_NAME);
+			//String sqlLoginDetails = "Select id,login_id,unit_id from mapping where unit_id = "+UnitId+" and society_id = "+SocietyId+";";
+			String sqlLoginDetails = "Select m.id as mapId,m.login_id,m.unit_id,d.device_id from mapping as m join device_details as d on d.login_id=m.login_id where m.unit_id = "+UnitId+" and m.society_id = "+SocietyId+" AND d.device_id <> '' ORDER BY d.id DESC";
+			loginDetails = dbop_soc_root.Select(sqlLoginDetails);
+			/*for(Entry<Integer, Map<String, Object>> entry1 : loginDetails.entrySet()) 
+			{
+				if(Integer.parseInt(entry1.getValue().get("unit_id").toString()) != 0)
+				{
+					sMapID = entry1.getValue().get("id").toString();
+				}
+				if(Integer.parseInt(entry1.getValue().get("login_id").toString()) != 0)
+				{
+					loginId = Integer.parseInt(entry1.getValue().get("login_id").toString());
+					String sqlDeviceDetails = "Select device_id from device_details where login_id = "+loginId+" AND device_id <> '' ORDER BY id DESC LIMIT 0,1 ";
+					HashMap<Integer, Map<String, Object>> deviceDetails = dbop_soc_root.Select(sqlDeviceDetails);
+					//rows2.put("device_id", deviceDetails);
+					entry1.getValue().put("device_id", deviceDetails);
+				}
+			}*/
+			 
+			if(loginDetails.size() > 0)
+			{
+				rows2.put("devices",MapUtility.HashMaptoList(loginDetails) );
+				rows.put("success",1);
+				rows.put("response",rows2);	
+				
+			}
+			else
+			{
+				rows2.put("message ","");
+				rows.put("success",0);
+				rows.put("response",rows2);
+				
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			rows.put("success","0");
+			rows2.put("message"," Please try again");
+			rows.put("response",rows2);
+		}
+		
+		return rows;
+	}
 	
 	public static void main(String[] args) //throws Exception
 	{
-		String sToken = "48Es1Oo8hP_yqBAwIbeVA6B-7Jh53YCYVzsIvOYQ0qfp_ZHr9bDat1vNwY5z2VNmRBO5t6bH0LkY66SSI5JMTFgbDbWneTK8juOdyTKHaZ1e-0O33w0fpP9BPzxQU1EsHzjShW-lhA9Ey6ZqXmbTsFmI5F9Tt8y4iz2sVyP5a_z1L0NVHC9n8Kq-DDmYpsU5";
+		String sToken = "W4t7pR5degU6vlCFzVGTH8lopm0ug0Hcl2TuuH1ucdHLbTnnp6PLv_drgqZtnXzfOULjQoRtEGlF8QEPM8AI97F-c08ECuoozP1XgTp_ExxXt0478lTS2SjNDQJLBA9k9gjoDTbSA2_1qF9AvY2C1Wb_E5PO_jJ7QYJS6wOAn7Brh27A2QlE5upEIItM1iuD";
 		News news = new News(sToken); //security
-
+		HashMap objHash = news.getDeviceId(26,59);
 		//news.getSocietyContact(156);
 		//news.getHomePageNews();
 //		HashMap objHash = news.updatelogin("sujit0304","0304","");
-		HashMap objHash = news.updatelogout("sujit0304","0304");
+		//HashMap objHash = news.updatelogout("sujit0304","0304");
 		Gson objGson = new Gson();
 		String objStr = objGson.toJson(objHash);
 		System.out.println("Dates:"+objStr);
