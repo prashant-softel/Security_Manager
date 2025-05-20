@@ -1191,9 +1191,9 @@ int Pulse = 99;
 		String otp1 = "9575";
 		String mobileNo1 = "9773029129";
 		int vid1 = 1473;
-		HashMap<Integer, Map<String, Object>> objHash = otp.verifyOtp(otp1,mobileNo1, vid1);		
+		int vid=1877;
 		
-		System.out.println(objHash);
+		
 		
 	
 		//HashMap<Integer, Map<String, Object>> objHash = otp.addunitforapproval(370,"365","48");

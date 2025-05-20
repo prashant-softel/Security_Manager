@@ -181,8 +181,9 @@ public class Visitor extends CommonBaseClass
 				dbop_soc = new DbOperations(DB_SOCIETY);
 
 				//sql1="Select * from visitorentry where status='inside' AND `outTimeStamp` ='0000-00-00 00:00:00' AND purpose_id NOT IN(0) AND visitor_ID NOT IN(0) ORDER BY id DESC";
-				sql1="Select v.*, p.purpose_name,p.time_limit from `visitorentry` as v join `purpose` as p on p.`purpose_id`= v.`purpose_id` where v.status='inside' AND v.`outTimeStamp` ='0000-00-00 00:00:00' AND v.purpose_id NOT IN(0) AND v.visitor_ID NOT IN(0) ORDER BY id DESC";
-				System.out.println("sql1 : " + sql1);
+//				sql1="Select v.*, p.purpose_name,p.time_limit from `visitorentry` as v join `purpose` as p on p.`purpose_id`= v.`purpose_id` where v.status='inside' AND v.`outTimeStamp` ='0000-00-00 00:00:00' AND v.purpose_id NOT IN(0) AND v.visitor_ID NOT IN(0) ORDER BY id DESC";
+				sql1 = "SELECT v.*, p.purpose_name, p.time_limit FROM visitorentry v JOIN (SELECT visitor_ID, MAX(id) AS max_id FROM visitorentry WHERE status='inside' AND outTimeStamp='0000-00-00 00:00:00' GROUP BY visitor_ID) latest ON v.visitor_ID = latest.visitor_ID AND v.id = latest.max_id JOIN purpose p ON p.purpose_id = v.purpose_id WHERE v.purpose_id NOT IN(0) AND v.visitor_ID NOT IN(0) ORDER BY v.id DESC";
+				System.out.println("sqlvisitor : " + sql1);
 				HashMap<Integer, Map<String, Object>>  flagDetails = new HashMap<Integer, Map<String, Object>>();
 				dbop_sec = new DbOperations(DB_SECURITY);
 				visitorEntryDetails = dbop_sec.Select(sql1);
@@ -1510,16 +1511,22 @@ public class Visitor extends CommonBaseClass
 		
 			HashMap rows = new HashMap<>();
 			HashMap rows2 = new HashMap<>();
+			String sExistingQuery = "";
 			String sInsertQuery = "";
 			String sLogo = "";
+			long mpCompany = 0;
 			
 		
 			try
 			{
-				sInsertQuery = "INSERT INTO `visitor_company` (`cat_id`, `c_name`,`logo`) VALUES ('"+purpose+"','"+company+"','"+sLogo+"')";
-				
 				dbop_sec_root = new DbOperations(DB_SECURITY_ROOT);
-				long mpCompany = dbop_sec_root.Insert(sInsertQuery);
+				sExistingQuery = "SELECT `cat_id` from `visitor_company` WHERE `c_name` = '"+company+"'";
+				HashMap<Integer, Map<String, Object>>  cat_id = dbop_sec_root.Select(sExistingQuery);
+				if(cat_id == null || cat_id.isEmpty()){
+					sInsertQuery = "INSERT INTO `visitor_company` (`cat_id`, `c_name`,`logo`) VALUES ('"+purpose+"','"+company+"','"+sLogo+"')";
+					 mpCompany = dbop_sec_root.Insert(sInsertQuery);
+				}
+				
 
 				
 				if(mpCompany  > 0)
@@ -1575,7 +1582,7 @@ public class Visitor extends CommonBaseClass
 		*/
 
 //		String sToken = "DaY1sA1Dd7fmBajZ-hqC2Yf7ohtf2ZO1w-SLgmvsoeeqAvE2igzUTMxK-379cQ9h2EtsW8dxRJ9OUDiCgztZQEIFsNcv6uGZkVxoMOfpICkwGvuIOyqnjft4-vgXhv_YAZ13fkMg2lrB2WX3X4t7EqGrh8yUKOS6yxEcwwYWV62rH-HQPOSmu8Mn9gEzpC8f";
-		String sToken = "fjXa44N5E5ZMd_4GPH_NLPw3SQ-xy3cduZqyryYwdndIE5a7e117IfUw3OFOjYjuzN9fAPxFFZjFNwdYFQS4TlgFuO-GEa1UowsMfGKMqCv63_9TC7PEva_uZU5Yq7Nj8jmtrFQ6AcyK5mrYRGQFRkOIllJdtFerIBiIZoCTbwpcsJNI-1EsXFutuSxtdhf_";
+		String sToken = "xMM4PQ7BiaJw98kS_TsUafwPKSkDBI_HiovO8kKhhCFFdwMwbuY41SvQUSU6H_OKTpSasNNh25gADSiAxpfqew8bJU7h-z3EcLyhfm4GafblyIOwp2MTIcjezQ_X33VMtodiFidAe2-afrKl59AIQih0rew0y7DGAvQjhG2KE2P-MotBo4aM3_LKqwk7ZtyK";
 		
 			
 		//		"WqErfW3eSh5cVm4q14AgSbFIJAnAaoZrSS0aTXPS1fK18LQrBMVlbdxc1S5YH8UGtFgOYKHfd_MrjnHpV9psLkeCIg41_EuEd0X93uaKKeHhyDystIrEAmGavUGonDfj_uMRhabf-3LeSLRB6Stdrx-KqSdeiQLH_S2jUYre5kGy9aNbFrGFTYMpWArNjjKu"
@@ -1588,7 +1595,7 @@ public class Visitor extends CommonBaseClass
 		{
 			int Entry_with = 1;
 		
-		HashMap objHash=v.fetchVisitor("9773029129", "1");
+		HashMap objHash=v.mfetchAllVisitors();
 //		String StartDate = "2018-10-19";
 //		String EndDate = "2018-11-19";
 //		int iVisitorId = 0;
@@ -1608,7 +1615,7 @@ public class Visitor extends CommonBaseClass
 			String StartDate = "2020-05-01";
 			String EndDate = "2020-08-01";
 			int iVisitorId = 7;
-		//HashMap<Integer, Map<String, Object>> objHash = v.fetchVisitorsReports( StartDate, EndDate, iVisitorId);
+//		HashMap<Integer, Map<String, Object>> objHash1 = v.fetchVisitorsReports( StartDate, EndDate, iVisitorId);
 		
 		Gson objGson1 = new Gson();
 		String objStr1 = objGson1.toJson(objHash);

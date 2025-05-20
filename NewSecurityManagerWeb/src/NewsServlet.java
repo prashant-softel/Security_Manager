@@ -121,9 +121,11 @@ public class NewsServlet extends HttpServlet {
 				}
 				else if(str.equals(projectUrl+"/News/OtpFlag"))
 				{
-					int iSocietyID= Integer.parseInt(request.getParameter("SocietyID").trim());
-					//System.out.println("SOcietyID"+iSocietyID );
+					int iSocietyID= Integer.parseInt(request.getParameter("SocietyId").trim());
+					System.out.println("SOcietyID"+iSocietyID );
 					HashMap objHash = newsObj.getEnableOTPFlag(iSocietyID);
+					out.println(objHash);
+					System.out.println("OtpFlag"+objHash );
 					Gson objGson = new Gson();
 					String objStr = objGson.toJson(objHash);
 					response.setContentType("application/json");
@@ -184,7 +186,18 @@ public class NewsServlet extends HttpServlet {
 					
 					out.println(objStr);
 				}
-				
+				else if(str.equals(projectUrl+"/News/GetDeviceId"))
+				{
+					//int unitId = request.getParameter("unit_id").trim();
+					int unitId= Integer.parseInt(request.getParameter("unit_id").trim());
+					int SocietyID= Integer.parseInt(request.getParameter("SocietyID").trim());
+					HashMap objHash = newsObj.getDeviceId(unitId,SocietyID);
+					Gson objGson = new Gson();
+					String objStr = objGson.toJson(objHash);
+					response.setContentType("application/json");
+					
+					out.println(objStr);
+				}
 				
 			}
 			

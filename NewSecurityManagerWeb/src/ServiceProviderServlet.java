@@ -26,6 +26,8 @@ public class ServiceProviderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	String projectUrl = "/NewSecurityManagerWeb";
+
+	
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -51,7 +53,7 @@ public class ServiceProviderServlet extends HttpServlet {
 		try 
 		{
 			String str = request.getRequestURI();
-			String sToken = request.getParameter("token").trim();			
+			String sToken = request.getParameter("token").trim();	
 			objServProvider =  new ServiceProvider(sToken);
 
 			if(str.equals(projectUrl+ "/ServiceProvider/fetchDocuments"))
@@ -73,6 +75,7 @@ public class ServiceProviderServlet extends HttpServlet {
 			else if(str.equals(projectUrl+"/ServiceProvider/fetchUnits"))
 			{
 				
+
 				HashMap objHash = objServProvider.mUnitList();
 				Gson objGson = new Gson();
 				String objStr = objGson.toJson(objHash);

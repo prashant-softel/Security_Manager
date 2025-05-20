@@ -97,7 +97,7 @@ public class ServiceProvider extends CommonBaseClass
 		try
 		{
 			dbop_sec = new DbOperations(DB_SECURITY);
-			sSelectUnit = "select purpose_id, purpose_name from purpose"; // where status = 
+			sSelectUnit = "select distinct purpose_id, purpose_name,purpose_image from purpose where pstatus ='Y'"; // where status = 
 			HashMap<Integer, Map<String, Object>>  pList = dbop_sec.Select(sSelectUnit);
 			if(pList.size() > 0)
 			{
@@ -125,25 +125,81 @@ public class ServiceProvider extends CommonBaseClass
 		//System.out.println(rows);
 		return  rows;
 	}
-	
+	public HashMap<Integer, Map<String, Object>> mMobileUdser(){
+		DbOperations dbop = null;
+		try {
+			dbop = new DbOperations(DB_ROOT_NAME);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    String squery = "SELECT m.unit_id, m.desc,m.society_id FROM device_details AS dd " +
+	                    "JOIN login AS lg ON dd.login_id = lg.login_id " +
+	                    "JOIN mapping AS m ON lg.login_id = m.login_id " +
+	                    "WHERE dd.device_id != '' " +
+	                    "GROUP BY m.unit_id " +
+	                    "ORDER BY m.society_id";
+	    HashMap<Integer, Map<String, Object>> mMemberList = dbop.Select(squery);
+	    return mMemberList;
+	}
 	//GET UNIT LIST
 	//public static HashMap<Integer, Map<String, Object>> mUnitList(int iWingID)
 	public  HashMap<Integer, Map<String, Object>> mUnitList()
 	{
 		HashMap rows = new HashMap<>();
 		HashMap rows2 = new HashMap<>();
-		
+		HashMap<Integer, Map<String, Object>> mobileUsersMap = mMobileUdser();
 		try
 		{
+			dbop_sec = new DbOperations(DB_SECURITY);
 			dbop_soc =new DbOperations(DB_SOCIETY);
-			String sSqlMemberMain = "";
+			String sSqlMemberMain = "";	
+			String dnd_fetchdata  = "";
 			//sSqlMemberMain = "select unit.`unit_no`,unit.`unit_id`,mem.owner_name,mem.mob from `unit` JOIN `member_main` as mem on unit.unit_id=mem.unit where unit.wing_id='"+iWingID+"' and mem.ownership_status = '1'";
-			sSqlMemberMain = "select unit.`unit_no`,unit.`unit_id`,unit.`wing_id`,mem.owner_name,mem.mob,concat_ws(' ',tm.tenant_name,tm.tenant_LName) as tenant_name,tm.mobile_no,tm.status,IF(tm.tenant_name != '','1','0') 'has_tenant',IF(tm.end_date >  CURDATE(), '1', '0') as tenant_active from `unit`  left join tenant_module as tm on  tm.unit_id = unit.unit_id left JOIN `member_main` as mem on unit.unit_id=mem.unit where mem.ownership_status = '1' ORDER BY `unit`.`sort_order`  ASC";
-			System.out.println("Query : " + sSqlMemberMain );
+//			sSqlMemberMain = "select distinct mem.owner_name,unit.`unit_no`,unit.`unit_id`,unit.`wing_id`,mem.mob,concat_ws(' ',tm.tenant_name,tm.tenant_LName) as tenant_name,tm.mobile_no,tm.status,IF(tm.tenant_name != '','1','0') 'has_tenant',IF(tm.end_date >  CURDATE(), '1', '0') as tenant_active from `unit`  left join tenant_module as tm on  tm.unit_id = unit.unit_id left JOIN `member_main` as mem on unit.unit_id=mem.unit where mem.ownership_status = '1' ORDER BY `unit`.`sort_order`  ASC";
+			sSqlMemberMain = "SELECT unit.unit_no,unit.society_id, unit.unit_id, unit.wing_id, mem.owner_name, mem.mob, CONCAT_WS(' ', tm.tenant_name, tm.tenant_LName) AS tenant_name, tm.mobile_no, tm.status, IF(tm.tenant_name != '', '1', '0') AS has_tenant, IF(tm.end_date > CURDATE(), '1', '0') AS tenant_active FROM unit LEFT JOIN (SELECT t1.* FROM tenant_module t1 INNER JOIN (SELECT unit_id, MAX(end_date) AS max_end FROM tenant_module GROUP BY unit_id) t2 ON t1.unit_id = t2.unit_id AND t1.end_date = t2.max_end) tm ON tm.unit_id = unit.unit_id LEFT JOIN member_main mem ON unit.unit_id = mem.unit WHERE mem.ownership_status = '1' ORDER BY unit.sort_order ASC";
 			HashMap<Integer, Map<String, Object>> mMemberList = dbop_soc.Select(sSqlMemberMain);
-			System.out.println("Output : " + mMemberList);
+			dnd_fetchdata = "SELECT dnd_id, unit_no, dnd_type, unit_id, dnd_msg from dnd_status where status=1";
+			HashMap<Integer, Map<String, Object>> dnd_data = dbop_sec.Select(dnd_fetchdata);
 			for(Entry<Integer, Map<String, Object>> entry1 : mMemberList.entrySet()) 
 			{
+				String sUnit_Id = entry1.getValue().get("unit_id").toString();
+				String sSociety_Id = entry1.getValue().get("society_id").toString();
+
+				int targetSocietyId = Integer.parseInt(sSociety_Id.trim());
+				List<String> visitorUnits = Arrays.asList(sUnit_Id.split(","));
+				boolean mobileUserExists = false;
+
+				for (Map.Entry<Integer, Map<String, Object>> mobileEntry : mobileUsersMap.entrySet()) {
+				    Map<String, Object> mobileUserData = mobileEntry.getValue();
+
+				    Object mobileUnitIdObj = mobileUserData.get("unit_id");
+				    Object mobileSocietyIdObj = mobileUserData.get("society_id");
+
+				    if (mobileUnitIdObj != null && mobileSocietyIdObj != null) {
+				        int mobileUnitId = Integer.parseInt(mobileUnitIdObj.toString().trim());
+				        int mobileSocietyId = Integer.parseInt(mobileSocietyIdObj.toString().trim());
+
+				        for (String visitorUnitStr : visitorUnits) {
+				            try {
+				                int visitorUnitId = Integer.parseInt(visitorUnitStr.trim());
+
+				                if (visitorUnitId == mobileUnitId && targetSocietyId == mobileSocietyId) {
+				                    mobileUserExists = true;
+				                    break;
+				                }
+				            } catch (NumberFormatException e) {
+				                System.err.println("Invalid unit_id format: " + visitorUnitStr);
+				            }
+				        }
+				    }
+
+				    if (mobileUserExists) {
+				        break;
+				    }
+				}
+				entry1.getValue().put("MobileUserExists", mobileUserExists ? 1 : 0);
+
 				if(entry1.getValue().get("has_tenant").equals("1") && entry1.getValue().get("tenant_active").equals("1"))
 				{
 					entry1.getValue().put("name", entry1.getValue().get("tenant_name"));
@@ -191,7 +247,6 @@ public class ServiceProvider extends CommonBaseClass
 				}
 				
 			}
-			System.out.println("mMemberList : " + mMemberList);
 			if(mMemberList.size() > 0)
 			{
 				//add member to map
@@ -202,7 +257,21 @@ public class ServiceProvider extends CommonBaseClass
 			else
 			{
 				//member not found
-				 rows2.put("member","");
+				 rows2.put("member", MapUtility.HashMaptoList(mMemberList));
+				 rows.put("success",0);
+				 rows.put("response",rows2);
+			}
+			if(dnd_data.size() > 0)
+			{
+				//fetch DND_data
+				 rows2.put("DND_record",MapUtility.HashMaptoList(dnd_data));
+				 rows.put("success",1);
+				 rows.put("response",rows2);			 
+			}
+			else
+			{
+				//DND_data not found
+				 rows2.put("DND_record", MapUtility.HashMaptoList(dnd_data));
 				 rows.put("success",0);
 				 rows.put("response",rows2);
 			}	 
@@ -261,6 +330,7 @@ public class ServiceProvider extends CommonBaseClass
 		String sSelectQuery = "";
 		HashMap rows = new HashMap<>();
 		HashMap rows2 = new HashMap<>();
+		String default_url = "https://way2society.com/images/mobileservice/visitor.png";
 	
 		try
 		{
@@ -270,6 +340,12 @@ public class ServiceProvider extends CommonBaseClass
 			//System.out.println(mpStaffDocument);
 			if(mpCompany.size() > 0)
 			{
+				for (Map<String, Object> company : mpCompany.values()) {
+				    Object logo = company.get("logo");
+				    if (logo == null || logo.toString().trim().equals("") || logo.toString().equalsIgnoreCase("null")) {
+				        company.put("logo", default_url);
+				    }
+				}
 				//add document to map
 				 rows2.put("CompanyName",MapUtility.HashMaptoList(mpCompany));
 				 rows.put("success",1);
@@ -774,13 +850,15 @@ public class ServiceProvider extends CommonBaseClass
 	///
 	public static void main(String[] args) //throws Exception
 	{
-		String sToken = "7OcsNHBSGr5lCZlc5Hb7rITIRR-MAhiGmRjszjyvLwDdLOar-X5orYtpfvcVXDF0WUk8wi9HL3tXgH26rnQ_qa8lsdKB6KdgP-PclmV3X9LxnXMA7U8ZH3PAYsqOwhuDdfl2Skj-_ht3gA0N_Od8oWpYoTQuS99G7a5U21fT2dxpEh0JrMhL7hVMaeZ795Vx";
+		String sToken = "HvMdMAcmKrk3U_YEwzXPTUZqe5M2BQVH38as6nX__kPVMj_xQBWscEDVUpe42XTxW5-zj_S7kWLDlMQmQbsDNeBDT_xDL8iovWvquh1NeL5dxHjqmk7rf7oO7dYk5MSe7n7KLdzdI44CcPP8z7fK1igwWWrzBsXZCAeOn_pUC-5Y3gce_cQXilMX89QFapplmHgsrli40ow0Z2xpkQh3vg";		
 		ServiceProvider sp = new ServiceProvider(sToken);
 
 		 
-		HashMap objHash = sp.mFetchExpVisitor(59);
+//		HashMap objHash = sp.mFetchExpVisitor(59);
+		int unit_id = 16;
+//		HashMap objHash = sp.mFetchCompany(1);
 		//HashMap objHash=sp.mFetchExpVisitor(59);
-		//HashMap objHash=sp.mPurposeList();
+		HashMap objHash=sp.mPurposeList();
 		//sp.mUnitList();
 		
 		//HashMap objHash=sp.fetchstaffidstatus(59, "D656");

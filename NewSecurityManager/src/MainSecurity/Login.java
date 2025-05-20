@@ -483,7 +483,7 @@ public class Login
 		
 		
 		Login obj = new Login();
-		HashMap objHash = obj.fetchLoginDetails("security1", "s123");
+		HashMap objHash = obj.fetchLoginDetails("mag_sec@gmail.com", "mag123");
 		System.out.println(objHash);
 
 /*		
