@@ -12,8 +12,8 @@ public final class DbConstants
 	
 	public static final String DB_HOST = "localhost:3306";
 	public static final String DB_USER = "root";	
-	public static final String DB_PASSWORD = "aws123";	//for deployment
-//	public static final String DB_PASSWORD = "";		//For local testing
+//	public static final String DB_PASSWORD = "aws123";	//for deployment
+	public static final String DB_PASSWORD = "";		//For local testing
 	
 	public static final String DB_ROOT_NAME = "hostmjbt_societydb";
 //	public String DB_SECURITY_ROOT = "security_rootdb";
