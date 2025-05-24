@@ -125,7 +125,7 @@ public class ServiceProvider extends CommonBaseClass
 		//System.out.println(rows);
 		return  rows;
 	}
-	public HashMap<Integer, Map<String, Object>> mMobileUdser(){
+	public HashMap<Integer, Map<String, Object>> mMobileUdser(String unitId,String societyId){
 		DbOperations dbop = null;
 		try {
 			dbop = new DbOperations(DB_ROOT_NAME);
@@ -133,12 +133,7 @@ public class ServiceProvider extends CommonBaseClass
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	    String squery = "SELECT m.unit_id, m.desc,m.society_id FROM device_details AS dd " +
-	                    "JOIN login AS lg ON dd.login_id = lg.login_id " +
-	                    "JOIN mapping AS m ON lg.login_id = m.login_id " +
-	                    "WHERE dd.device_id != '' " +
-	                    "GROUP BY m.unit_id " +
-	                    "ORDER BY m.society_id";
+	    String squery = "SELECT m.unit_id, m.desc,m.society_id FROM device_details AS dd JOIN login AS lg ON dd.login_id = lg.login_id  JOIN mapping AS m ON lg.login_id = m.login_id WHERE dd.device_id != '' and m.society_id='"+societyId+"' and m.unit_id='"+unitId+"'";	                    
 	    HashMap<Integer, Map<String, Object>> mMemberList = dbop.Select(squery);
 	    return mMemberList;
 	}
@@ -148,7 +143,7 @@ public class ServiceProvider extends CommonBaseClass
 	{
 		HashMap rows = new HashMap<>();
 		HashMap rows2 = new HashMap<>();
-		HashMap<Integer, Map<String, Object>> mobileUsersMap = mMobileUdser();
+//		HashMap<Integer, Map<String, Object>> mobileUsersMap = mMobileUdser();
 		try
 		{
 			dbop_sec = new DbOperations(DB_SECURITY);
@@ -169,35 +164,38 @@ public class ServiceProvider extends CommonBaseClass
 				int targetSocietyId = Integer.parseInt(sSociety_Id.trim());
 				List<String> visitorUnits = Arrays.asList(sUnit_Id.split(","));
 				boolean mobileUserExists = false;
+				HashMap<Integer, Map<String, Object>> mobileUsersMap = mMobileUdser(sUnit_Id,sSociety_Id);
+				 mobileUserExists = (mobileUsersMap != null && !mobileUsersMap.isEmpty());
 
-				for (Map.Entry<Integer, Map<String, Object>> mobileEntry : mobileUsersMap.entrySet()) {
-				    Map<String, Object> mobileUserData = mobileEntry.getValue();
 
-				    Object mobileUnitIdObj = mobileUserData.get("unit_id");
-				    Object mobileSocietyIdObj = mobileUserData.get("society_id");
-
-				    if (mobileUnitIdObj != null && mobileSocietyIdObj != null) {
-				        int mobileUnitId = Integer.parseInt(mobileUnitIdObj.toString().trim());
-				        int mobileSocietyId = Integer.parseInt(mobileSocietyIdObj.toString().trim());
-
-				        for (String visitorUnitStr : visitorUnits) {
-				            try {
-				                int visitorUnitId = Integer.parseInt(visitorUnitStr.trim());
-
-				                if (visitorUnitId == mobileUnitId && targetSocietyId == mobileSocietyId) {
-				                    mobileUserExists = true;
-				                    break;
-				                }
-				            } catch (NumberFormatException e) {
-				                System.err.println("Invalid unit_id format: " + visitorUnitStr);
-				            }
-				        }
-				    }
-
-				    if (mobileUserExists) {
-				        break;
-				    }
-				}
+//				for (Map.Entry<Integer, Map<String, Object>> mobileEntry : mobileUsersMap.entrySet()) {
+//				    Map<String, Object> mobileUserData = mobileEntry.getValue();
+//
+//				    Object mobileUnitIdObj = mobileUserData.get("unit_id");
+//				    Object mobileSocietyIdObj = mobileUserData.get("society_id");
+//
+//				    if (mobileUnitIdObj != null && mobileSocietyIdObj != null) {
+//				        int mobileUnitId = Integer.parseInt(mobileUnitIdObj.toString().trim());
+//				        int mobileSocietyId = Integer.parseInt(mobileSocietyIdObj.toString().trim());
+//
+//				        for (String visitorUnitStr : visitorUnits) {
+//				            try {
+//				                int visitorUnitId = Integer.parseInt(visitorUnitStr.trim());
+//				                System.out.println();
+//				                if (visitorUnitId == mobileUnitId && targetSocietyId == mobileSocietyId) {
+//				                    mobileUserExists = true;
+//				                    break;
+//				                }
+//				            } catch (NumberFormatException e) {
+//				                System.err.println("Invalid unit_id format: " + visitorUnitStr);
+//				            }
+//				        }
+//				    }
+//
+//				    if (mobileUserExists) {
+//				        break;
+//				    }
+//				}
 				entry1.getValue().put("MobileUserExists", mobileUserExists ? 1 : 0);
 
 				if(entry1.getValue().get("has_tenant").equals("1") && entry1.getValue().get("tenant_active").equals("1"))
@@ -850,7 +848,7 @@ public class ServiceProvider extends CommonBaseClass
 	///
 	public static void main(String[] args) //throws Exception
 	{
-		String sToken = "HvMdMAcmKrk3U_YEwzXPTUZqe5M2BQVH38as6nX__kPVMj_xQBWscEDVUpe42XTxW5-zj_S7kWLDlMQmQbsDNeBDT_xDL8iovWvquh1NeL5dxHjqmk7rf7oO7dYk5MSe7n7KLdzdI44CcPP8z7fK1igwWWrzBsXZCAeOn_pUC-5Y3gce_cQXilMX89QFapplmHgsrli40ow0Z2xpkQh3vg";		
+		String sToken = "kLM_fA_b9aTQr3Bd9tCJn6nAHX1Ly6QCus79pookaPOfRVUr_77d-ZCDWGP7uwnaaARYqSc6_XIfIUr8KyFUQUETV3_yH5huor9WWMHaBpSo6EOgMPFbucPBu6BnzN8sW2N2scWi9QLeBsxUhX1H_UemSHhkchUiRoB5o0PhgvwuLOqjrW4GB0mVTG_9hW7W05GdCDMC1YY03Y8gEa-cTQ";		
 		ServiceProvider sp = new ServiceProvider(sToken);
 
 		 
@@ -858,7 +856,7 @@ public class ServiceProvider extends CommonBaseClass
 		int unit_id = 16;
 //		HashMap objHash = sp.mFetchCompany(1);
 		//HashMap objHash=sp.mFetchExpVisitor(59);
-		HashMap objHash=sp.mPurposeList();
+		HashMap objHash=sp.mUnitList();
 		//sp.mUnitList();
 		
 		//HashMap objHash=sp.fetchstaffidstatus(59, "D656");
@@ -873,7 +871,7 @@ public class ServiceProvider extends CommonBaseClass
 		String objStr = objGson.toJson(objHash);
 		System.out.println(objStr);
 		
-	
+
 	
 	
 	
